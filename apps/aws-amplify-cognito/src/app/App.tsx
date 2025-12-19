@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/accessible-emoji */
+
 import React, { useRef, useState } from 'react';
 import {
   SafeAreaView,
@@ -38,7 +38,7 @@ export const App = () => {
               testID="heading"
               role="heading"
             >
-              Welcome AwsAmplifyCognito 👋
+              Welcome AwsAmplifyCognito
             </Text>
           </View>
           <View style={styles.section}>

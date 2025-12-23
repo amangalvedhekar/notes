@@ -29,6 +29,7 @@ const rollupPlugin = (matchers: RegExp[]) => ({
 });
 
 export default defineConfig({
+  // @ts-expect-error - check why this errors
   root: import.meta.dirname,
   cacheDir: '../../node_modules/.vite/apps/aws-amplify-cognito',
   define: {

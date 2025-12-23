@@ -5,6 +5,9 @@
   "references": [
     {
       "path": "./apps/aws-amplify-cognito"
+    },
+    {
+      "path": "./libs/components"
     }
   ]
 }

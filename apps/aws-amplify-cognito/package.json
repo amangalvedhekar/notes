@@ -11,6 +11,17 @@
     "@testing-library/react-native": "*",
     "react-test-renderer": "*",
     "metro-config": "*",
-    "@notes/components": "*"
-  }
+    "@notes/components": "*",
+    "@nx/eslint-plugin": "*",
+    "react-native-svg-transformer": "*",
+    "tamagui": "*",
+    "aws-amplify": "*",
+    "@tamagui/config": "*",
+    "react-dom": "*",
+    "vite": "*",
+    "@vitejs/plugin-react": "*",
+    "@nx/vite": "*",
+    "esbuild": "*"
+  },
+  "devDependencies": {}
 }

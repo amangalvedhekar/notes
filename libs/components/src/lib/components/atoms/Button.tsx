@@ -1,8 +1,8 @@
 import { Button as TamaguiButton, ButtonProps } from 'tamagui';
 
-export const Button = ({children}: ButtonProps) => {
+export const Button = ({children, ...rest}: ButtonProps) => {
   return (
-    <TamaguiButton>
+    <TamaguiButton {...rest}>
       {children}
     </TamaguiButton>
   )

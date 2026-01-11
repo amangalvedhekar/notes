@@ -1,20 +1,23 @@
 import * as React from 'react';
 import { render, screen, userEvent } from '@testing-library/react-native';
 import * as Auth from 'aws-amplify/auth';
-import { AuthProvider, Button, ThemeProvider, useAuth } from '../src';
+import { AuthProvider, Button, ThemeProvider, useAuth } from '../../src';
 
 jest.mock('aws-amplify/auth');
+
+type TriggerProps = {
+  triggerType: TriggerType;
+  username?: string;
+  password?: string;
+  confirmationCode?: string;
+};
+
 const Trigger = ({
   triggerType,
   username = '',
   password = '',
   confirmationCode = '',
-}: {
-  triggerType: TriggerType;
-  username?: string;
-  password?: string;
-  confirmationCode?: string;
-}) => {
+}: TriggerProps) => {
   const { register, confirmUser } = useAuth();
   const onPress = async () => {
     const lookUp = {

@@ -1,6 +1,7 @@
 import React from 'react';
-import { ScrollView, StatusBar, useColorScheme } from 'react-native';
-import { ThemeProvider, InputWithLabel } from '@notes/components';
+import { StatusBar, useColorScheme } from 'react-native';
+import { ThemeProvider, AuthProvider } from '@notes/components';
+import { Registration } from './screens/signedout/Registration';
 
 
 export const App = () => {
@@ -8,12 +9,9 @@ export const App = () => {
   return (
     <ThemeProvider defaultTheme={scheme}>
       <StatusBar barStyle="dark-content" />
-
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <InputWithLabel labelText="Email" id="email" />
-        <InputWithLabel labelText="Password" id="password" />
-        {/*<Button>lol</Button>*/}
-      </ScrollView>
+      <AuthProvider>
+        <Registration />
+      </AuthProvider>
     </ThemeProvider>
   );
 };

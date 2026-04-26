@@ -1,9 +1,13 @@
-import { Button as TamaguiButton, ButtonProps } from 'tamagui';
+import { Button as TamaguiButton, ButtonProps as TamaguiProps, Spinner } from 'tamagui';
 
-export const Button = ({children, ...rest}: ButtonProps) => {
+export type ButtonProps = TamaguiProps & {
+  isLoading?: boolean;
+};
+
+export const Button = ({children, isLoading = false, ...rest}: ButtonProps) => {
   return (
     <TamaguiButton {...rest}>
-      {children}
+      {isLoading ? <Spinner /> : children}
     </TamaguiButton>
   )
 }

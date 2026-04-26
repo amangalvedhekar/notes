@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
 import { ThemeProvider, AuthProvider } from '@notes/components';
-import { Registration } from './screens/signedout/Registration';
+import { Registration } from './screens/signedout/Registration/';
 
 
 export const App = () => {

@@ -4,3 +4,4 @@ export * from './Label';
 export * from './XStack';
 export * from './Paragraph';
 export * from './Icon';
+export * from './Checkbox';

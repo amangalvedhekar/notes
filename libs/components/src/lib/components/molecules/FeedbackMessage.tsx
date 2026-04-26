@@ -1,9 +1,12 @@
 import { XStack, Paragraph, IconName, Icon } from '../atoms';
 
-export type FeedbackMessageProps = {
+export type FeedbackMessageBase = {
   message: string;
-  type: IconName;
   testID: string;
+};
+
+export type FeedbackMessageProps = FeedbackMessageBase & {
+  type: IconName;
 };
 
 export const FeedbackMessage = ({ message, type, testID }: FeedbackMessageProps) => {

@@ -1,3 +1,4 @@
+//#region Imports
 import { useState } from 'react';
 import {
   Button,
@@ -21,14 +22,18 @@ import {
   initialUi,
   initialValues,
 } from './utility';
+//#endregion
 
 export const Registration = () => {
+  //#region State
   const [values, setValues] = useState<FormValues>(initialValues);
   const [touched, setTouched] = useState<FormTouched>(initialTouched);
   const [ui, setUi] = useState<FormUi>(initialUi);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  //#endregion
 
+  //#region Field Helpers
   const setField = <K extends keyof FormValues>(key: K, value: FormValues[K]) => {
     setValues(prev => ({ ...prev, [key]: value }));
     setUi(prev => ({ ...prev, serverError: null }));
@@ -37,7 +42,9 @@ export const Registration = () => {
   const touchField = (key: keyof FormTouched) => {
     setTouched(prev => ({ ...prev, [key]: true }));
   };
+  //#endregion
 
+  //#region Derived State
   const passwordChecks = getPasswordChecks(values.password);
   const passwordValidationItems = getPasswordValidationItems(passwordChecks);
   const isPasswordValid = Object.values(passwordChecks).every(Boolean);
@@ -52,7 +59,9 @@ export const Registration = () => {
     !errors.confirmPassword &&
     !errors.acceptedLegal &&
     !ui.isSubmitting;
+  //#endregion
 
+  //#region Actions
   const onSubmit = () => {
     setUi(prev => ({ ...prev, isSubmitted: true, serverError: null }));
 
@@ -63,7 +72,9 @@ export const Registration = () => {
     setUi(prev => ({ ...prev, isSubmitting: true }));
     setUi(prev => ({ ...prev, isSubmitting: false }));
   };
+  //#endregion
 
+  //#region Render
   return (
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"
@@ -174,4 +185,5 @@ export const Registration = () => {
       </YStack>
     </ScrollView>
   );
+  //#endregion
 };

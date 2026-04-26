@@ -1,6 +1,6 @@
 import { Square, XStack, YStack } from 'tamagui';
-import { FeedbackMessage } from '../molecules/FeedbackMessage';
-import type { FeedbackMessageBase } from '../molecules/FeedbackMessage';
+import { FeedbackMessage } from '../molecules';
+import type { FeedbackMessageBase } from '../molecules';
 
 export type LiveValidationItem = FeedbackMessageBase & {
   isValid: boolean;
@@ -16,7 +16,7 @@ export type LiveValidationProps = {
 export const LiveValidation = ({
   items,
   visible = true,
-  showProgressBar = true,
+  showProgressBar = false,
 }: LiveValidationProps) => {
   if (!visible || items.length === 0) {
     return null;

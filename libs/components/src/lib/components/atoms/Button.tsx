@@ -4,9 +4,9 @@ export type ButtonProps = TamaguiProps & {
   isLoading?: boolean;
 };
 
-export const Button = ({children, isLoading = false, ...rest}: ButtonProps) => {
+export const Button = ({children, isLoading = false, disabled = false, ...rest}: ButtonProps) => {
   return (
-    <TamaguiButton {...rest}>
+    <TamaguiButton {...rest} opacity={disabled ? 0.3: 1}>
       {isLoading ? <Spinner /> : children}
     </TamaguiButton>
   )

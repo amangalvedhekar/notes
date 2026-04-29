@@ -8,6 +8,9 @@
     },
     {
       "path": "./libs/components"
+    },
+    {
+      "path": "./apps/aws-amplify-cognito-web"
     }
   ]
 }

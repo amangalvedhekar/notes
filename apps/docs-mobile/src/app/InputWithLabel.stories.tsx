@@ -1,16 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Hide, InputWithLabel, Lock, Profile, ThemeProvider } from '@notes/components';
+import { Hide, InputWithLabel, Lock, Profile } from '@notes/components';
 
 const meta: Meta<typeof InputWithLabel> = {
   component: InputWithLabel,
   title: 'Molecules/InputWithLabel',
-  decorators: [
-    (Story) => (
-      <ThemeProvider defaultTheme="light">
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
   args: {
     id: 'email',
     labelText: 'Email',

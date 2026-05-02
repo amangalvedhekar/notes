@@ -1,16 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { FeedbackMessage, ThemeProvider } from '@notes/components';
+import { FeedbackMessage } from '@notes/components';
 
 const meta: Meta<typeof FeedbackMessage> = {
   component: FeedbackMessage,
   title: 'Molecules/FeedbackMessage',
-  decorators: [
-    (Story) => (
-      <ThemeProvider defaultTheme="light">
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
   args: {
     message: 'Must be at least 8 characters long',
     testID: 'feedback-message',
@@ -46,4 +39,3 @@ export const Error: Story = {
     type: 'error',
   },
 };
-

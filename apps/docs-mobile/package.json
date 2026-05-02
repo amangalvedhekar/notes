@@ -10,7 +10,6 @@
     "@react-native-community/datetimepicker": "^9.1.0",
     "@react-native/metro-config": "*",
     "@storybook/addon-ondevice-actions": "*",
-    "@storybook/addon-ondevice-backgrounds": "*",
     "@storybook/addon-ondevice-controls": "*",
     "@storybook/react-native": "*",
     "@testing-library/react-native": "*",

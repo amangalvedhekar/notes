@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { FeedbackMessage, ThemeProvider } from '@notes/components';
+import { FeedbackMessage } from '@notes/components';
 
 const meta: Meta<typeof FeedbackMessage> = {
   component: FeedbackMessage,
@@ -7,11 +7,9 @@ const meta: Meta<typeof FeedbackMessage> = {
   title: 'Molecules/FeedbackMessage',
   decorators: [
     (Story) => (
-      <ThemeProvider defaultTheme="light">
-        <div style={{ maxWidth: 420, padding: 24 }}>
-          <Story />
-        </div>
-      </ThemeProvider>
+      <div style={{ maxWidth: 420, padding: 24 }}>
+        <Story />
+      </div>
     ),
   ],
   args: {
@@ -49,4 +47,3 @@ export const Error: Story = {
     type: 'error',
   },
 };
-

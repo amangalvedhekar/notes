@@ -5,7 +5,12 @@ import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   stories: ['../src/app/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
-  addons: ['@storybook/addon-docs'],
+  staticDirs: ['../public'],
+  addons: [
+    '@storybook/addon-docs',
+    '@storybook/addon-a11y',
+    '@storybook/addon-vitest',
+  ],
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
     options: {
@@ -14,6 +19,11 @@ const config: StorybookConfig = {
       },
     },
   },
+  managerHead: (head) => `
+    ${head}
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/storybook-icon.png" />
+  `,
 };
 
 function getAbsolutePath(value: string): any {

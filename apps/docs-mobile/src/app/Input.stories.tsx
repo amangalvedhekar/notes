@@ -1,16 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Input, ThemeProvider } from '@notes/components';
+import { Input } from '@notes/components';
 
 const meta: Meta<typeof Input> = {
   component: Input,
   title: 'Atoms/Input',
-  decorators: [
-    (Story) => (
-      <ThemeProvider defaultTheme="light">
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
   args: {
     borderRadius: '$8',
     placeholder: 'test@example.com',
@@ -50,4 +43,3 @@ export const Invalid: Story = {
     value: 'not-an-email',
   },
 };
-

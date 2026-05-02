@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Icon, ThemeProvider } from '@notes/components';
+import { Icon } from '@notes/components';
 
 const meta: Meta<typeof Icon> = {
   component: Icon,
@@ -7,11 +7,9 @@ const meta: Meta<typeof Icon> = {
   title: 'Atoms/Icon',
   decorators: [
     (Story) => (
-      <ThemeProvider defaultTheme="light">
-        <div style={{ alignItems: 'center', display: 'flex', gap: 16, padding: 24 }}>
-          <Story />
-        </div>
-      </ThemeProvider>
+      <div style={{ alignItems: 'center', display: 'flex', gap: 16, padding: 24 }}>
+        <Story />
+      </div>
     ),
   ],
   args: {

@@ -1,16 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Checkbox, ThemeProvider } from '@notes/components';
+import { Checkbox } from '@notes/components';
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
   title: 'Atoms/Checkbox',
-  decorators: [
-    (Story) => (
-      <ThemeProvider defaultTheme="light">
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
   args: {
     id: 'terms-native',
     labelText: 'Accept terms and conditions',

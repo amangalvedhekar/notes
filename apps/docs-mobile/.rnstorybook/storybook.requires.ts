@@ -3,13 +3,12 @@
 import { start, updateView, View, type Features } from '@storybook/react-native';
 
 import "@storybook/addon-ondevice-actions/register";
-import "@storybook/addon-ondevice-backgrounds/register";
 import "@storybook/addon-ondevice-controls/register";
 
 const normalizedStories = [
   {
     titlePrefix: "",
-    directory: "./src",
+    directory: "./apps/docs-mobile/src",
     files: "**/*.stories.?(ts|tsx|js|jsx)",
     importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
     req: require.context(

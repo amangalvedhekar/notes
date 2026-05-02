@@ -1,16 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Button, ThemeProvider } from '@notes/components';
+import { Button } from '@notes/components';
 
 const meta: Meta<typeof Button> = {
   component: Button,
   title: 'Atoms/Button',
-  decorators: [
-    (Story) => (
-      <ThemeProvider defaultTheme="light">
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
   args: {
     borderRadius: '$8',
     children: 'Register',
@@ -48,4 +41,3 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
-

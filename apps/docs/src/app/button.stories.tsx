@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button, ThemeProvider } from '@notes/components';
+import { Button } from '@notes/components';
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -7,11 +7,9 @@ const meta: Meta<typeof Button> = {
   title: 'Atoms/Button',
   decorators: [
     (Story) => (
-      <ThemeProvider defaultTheme="light">
-        <div style={{ padding: 24 }}>
-          <Story />
-        </div>
-      </ThemeProvider>
+      <div style={{ padding: 24 }}>
+        <Story />
+      </div>
     ),
   ],
   args: {

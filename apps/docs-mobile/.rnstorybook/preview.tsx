@@ -1,27 +1,50 @@
 import { View } from 'react-native';
 import type { Preview } from '@storybook/react-native';
-import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
+import { ThemeProvider } from '@notes/components';
+
+const themeOptions = ['light', 'dark'] as const;
+
+type ThemeName = (typeof themeOptions)[number];
+
+const getThemeName = (theme: unknown): ThemeName => (theme === 'dark' ? 'dark' : 'light');
 
 const preview: Preview = {
+  globalTypes: {
+    theme: {
+      description: 'Tamagui theme',
+      defaultValue: 'light',
+      toolbar: {
+        title: 'Theme',
+        icon: 'circlehollow',
+        items: themeOptions.map((theme) => ({
+          title: theme,
+          value: theme,
+        })),
+      },
+    },
+  },
   decorators: [
-    withBackgrounds,
-    (Story) => (
-      <View style={{ flex: 1, justifyContent: 'center' }}>
-        <Story />
-      </View>
-    ),
+    (Story, context) => {
+      const theme = getThemeName(context.globals.theme);
+
+      return (
+        <ThemeProvider defaultTheme={theme}>
+          <View
+            style={{
+              backgroundColor: theme === 'dark' ? '#0b1220' : '#ffffff',
+              flex: 1,
+              justifyContent: 'center',
+            }}
+          >
+            <Story />
+          </View>
+        </ThemeProvider>
+      );
+    },
   ],
   parameters: {
     actions: {
       argTypesRegex: '^on.*',
-    },
-    backgrounds: {
-      default: 'night',
-      values: [
-        { name: 'night', value: '#0b1220' },
-        { name: 'paper', value: '#f8f6ef' },
-        { name: 'mint', value: '#d1fae5' },
-      ],
     },
     controls: {
       matchers: {

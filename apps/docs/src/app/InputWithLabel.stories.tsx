@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Hide, InputWithLabel, Lock, Profile, ThemeProvider } from '@notes/components';
+import { Hide, InputWithLabel, Lock, Profile } from '@notes/components';
 
 const meta: Meta<typeof InputWithLabel> = {
   component: InputWithLabel,
@@ -7,11 +7,9 @@ const meta: Meta<typeof InputWithLabel> = {
   title: 'Molecules/InputWithLabel',
   decorators: [
     (Story) => (
-      <ThemeProvider defaultTheme="light">
-        <div style={{ maxWidth: 360, padding: 24 }}>
-          <Story />
-        </div>
-      </ThemeProvider>
+      <div style={{ maxWidth: 360, padding: 24 }}>
+        <Story />
+      </div>
     ),
   ],
   args: {

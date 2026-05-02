@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Checkbox, ThemeProvider } from '@notes/components';
+import { Checkbox } from '@notes/components';
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
@@ -7,11 +7,9 @@ const meta: Meta<typeof Checkbox> = {
   title: 'Atoms/Checkbox',
   decorators: [
     (Story) => (
-      <ThemeProvider defaultTheme="light">
-        <div style={{ padding: 24 }}>
-          <Story />
-        </div>
-      </ThemeProvider>
+      <div style={{ padding: 24 }}>
+        <Story />
+      </div>
     ),
   ],
   args: {

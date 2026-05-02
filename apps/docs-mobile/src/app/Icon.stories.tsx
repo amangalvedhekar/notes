@@ -1,16 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Icon, ThemeProvider } from '@notes/components';
+import { Icon } from '@notes/components';
 
 const meta: Meta<typeof Icon> = {
   component: Icon,
   title: 'Atoms/Icon',
-  decorators: [
-    (Story) => (
-      <ThemeProvider defaultTheme="light">
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
   args: {
     height: 32,
     name: 'success',
@@ -41,4 +34,3 @@ export const Error: Story = {
     name: 'error',
   },
 };
-

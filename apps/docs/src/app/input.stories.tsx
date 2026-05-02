@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Input, ThemeProvider } from '@notes/components';
+import { Input } from '@notes/components';
 
 const meta: Meta<typeof Input> = {
   component: Input,
@@ -7,11 +7,9 @@ const meta: Meta<typeof Input> = {
   title: 'Atoms/Input',
   decorators: [
     (Story) => (
-      <ThemeProvider defaultTheme="light">
-        <div style={{ maxWidth: 360, padding: 24 }}>
-          <Story />
-        </div>
-      </ThemeProvider>
+      <div style={{ maxWidth: 360, padding: 24 }}>
+        <Story />
+      </div>
     ),
   ],
   args: {
@@ -52,4 +50,3 @@ export const Invalid: Story = {
     value: 'not-an-email',
   },
 };
-

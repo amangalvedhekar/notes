@@ -1,0 +1,31 @@
+{
+  "name": "@notes/docs-mobile",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@babel/runtime": "*",
+    "@nx/eslint-plugin": "*",
+    "@nx/vite": "*",
+    "@react-native-async-storage/async-storage": "*",
+    "@react-native-community/datetimepicker": "^9.1.0",
+    "@react-native/metro-config": "*",
+    "@storybook/addon-ondevice-actions": "*",
+    "@storybook/addon-ondevice-backgrounds": "*",
+    "@storybook/addon-ondevice-controls": "*",
+    "@storybook/react-native": "*",
+    "@testing-library/react-native": "*",
+    "@vitejs/plugin-react": "*",
+    "metro-config": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-native": "*",
+    "react-native-gesture-handler": "*",
+    "react-native-reanimated": "*",
+    "react-native-safe-area-context": "*",
+    "react-native-svg": "*",
+    "react-native-svg-transformer": "*",
+    "react-native-worklets": "*",
+    "react-test-renderer": "*",
+    "vite": "*"
+  }
+}

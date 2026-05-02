@@ -1,0 +1,8 @@
+{
+  "name": "@notes/docs",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "@storybook/addon-docs": "^10.3.6"
+  }
+}

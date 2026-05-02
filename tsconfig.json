@@ -11,6 +11,12 @@
     },
     {
       "path": "./apps/aws-amplify-cognito-web"
+    },
+    {
+      "path": "./apps/docs"
+    },
+    {
+      "path": "./apps/docs-mobile"
     }
   ]
 }

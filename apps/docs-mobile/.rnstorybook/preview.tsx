@@ -43,6 +43,11 @@ const preview: Preview = {
     },
   ],
   parameters: {
+    options: {
+      storySort: {
+        order: ['Getting Started', '*'],
+      },
+    },
     actions: {
       argTypesRegex: '^on.*',
     },

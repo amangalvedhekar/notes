@@ -9,6 +9,13 @@ type ThemeName = (typeof themeOptions)[number];
 const getThemeName = (theme: unknown): ThemeName => (theme === 'dark' ? 'dark' : 'light');
 
 const preview: Preview = {
+  parameters: {
+    options: {
+      storySort: {
+        order: ['Getting Started', '*'],
+      },
+    },
+  },
   globalTypes: {
     theme: {
       description: 'Tamagui theme',

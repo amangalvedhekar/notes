@@ -1,7 +1,7 @@
 //#region Imports
 import { useState } from 'react';
 import { ScrollView } from 'react-native';
-import { H2, H5, YStack } from 'tamagui';
+import { H2, H1, YStack } from 'tamagui';
 import { Button, Checkbox, Paragraph } from '../../atoms';
 import { Hide, Lock, Profile, Show, Unlock } from '../../icons';
 import { InputWithLabel } from '../../molecules';
@@ -76,8 +76,8 @@ export const Registration = () => {
     >
       <YStack flex={1} justifyContent="space-between">
         <YStack gap="$1">
-          <H2 color="purple">Registration</H2>
-          <H5 fontWeight="bold">Create an account</H5>
+          <H1 color="purple">Registration</H1>
+          <H2 fontWeight="bold">Create an account</H2>
           <InputWithLabel
             labelText="Email"
             size="$6"

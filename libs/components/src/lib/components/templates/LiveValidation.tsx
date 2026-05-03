@@ -1,6 +1,7 @@
 import { Square, XStack, YStack } from 'tamagui';
 import { FeedbackMessage } from '../molecules';
 import type { FeedbackMessageBase } from '../molecules';
+import { Fragment } from 'react';
 
 export type LiveValidationItem = FeedbackMessageBase & {
   isValid: boolean;
@@ -23,7 +24,7 @@ export const LiveValidation = ({
   }
 
   return (
-    <YStack>
+    <Fragment>
       {showProgressBar ? (
         <XStack flex={1} margin="$2">
           {items.map((item) => (
@@ -48,6 +49,6 @@ export const LiveValidation = ({
           />
         </YStack>
       ))}
-    </YStack>
+    </Fragment>
   );
 };

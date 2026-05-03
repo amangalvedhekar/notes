@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Input, Label } from '../atoms';
 import { InputProps, YStack } from 'tamagui';
 import { Paragraph } from '../atoms/Paragraph';
+import { Pressable } from 'react-native';
 
 export interface InputWithLabelProps extends InputProps {
   labelText: string;
@@ -44,21 +45,6 @@ export const InputWithLabel = ({
             {leftIcon}
           </YStack>
         )}
-        {rightIcon && (
-          <YStack
-            position="absolute"
-            right="$3"
-            top={0}
-            bottom={0}
-            justifyContent="center"
-            zIndex="$1"
-            pressStyle={{ opacity: 0.7 }}
-            onPress={onRightIconPress}
-            pointerEvents={onRightIconPress ? 'auto' : 'none'}
-          >
-            {rightIcon}
-          </YStack>
-        )}
         <Input
           id={id}
           size="$4"
@@ -68,6 +54,21 @@ export const InputWithLabel = ({
           {...(isInvalid ? { borderColor: 'red' } : {})}
           {...rest}
         />
+        {rightIcon && (
+          <Pressable
+            style={{
+              position: 'absolute',
+              right: 24,
+              top:0,
+              bottom:0,
+              justifyContent: 'center'
+            }}
+            onPress={onRightIconPress}
+            pointerEvents={onRightIconPress ? 'auto' : 'none'}
+          >
+            {rightIcon}
+          </Pressable>
+        )}
       </YStack>
       {isInvalid && errorMessage && <Paragraph color="red">{errorMessage}</Paragraph>}
     </YStack>

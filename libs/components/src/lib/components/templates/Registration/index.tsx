@@ -1,18 +1,11 @@
 //#region Imports
 import { useState } from 'react';
-import {
-  Button,
-  Checkbox,
-  Hide,
-  InputWithLabel,
-  LiveValidation,
-  Lock,
-  Paragraph,
-  Profile,
-  Show, Unlock,
-} from '@notes/components';
 import { ScrollView } from 'react-native';
-import { H2, H5, YStack } from 'tamagui';
+import { H2, H1, YStack } from 'tamagui';
+import { Button, Checkbox, Paragraph } from '../../atoms';
+import { Hide, Lock, Profile, Show, Unlock } from '../../icons';
+import { InputWithLabel } from '../../molecules';
+import { LiveValidation } from '../LiveValidation';
 import type { FormTouched, FormUi, FormValues } from './types';
 import {
   getErrors,
@@ -69,8 +62,8 @@ export const Registration = () => {
       return;
     }
 
-    setUi(prev => ({ ...prev, isSubmitting: true }));
-    setUi(prev => ({ ...prev, isSubmitting: false }));
+    // setUi(prev => ({ ...prev, isSubmitting: true }));
+    // setUi(prev => ({ ...prev, isSubmitting: false }));
   };
   //#endregion
 
@@ -83,8 +76,8 @@ export const Registration = () => {
     >
       <YStack flex={1} justifyContent="space-between">
         <YStack gap="$1">
-          <H2 color="purple">Registration</H2>
-          <H5 fontWeight="bold">Create an account</H5>
+          <H1 color="purple">Registration</H1>
+          <H2 fontWeight="bold">Create an account</H2>
           <InputWithLabel
             labelText="Email"
             size="$6"

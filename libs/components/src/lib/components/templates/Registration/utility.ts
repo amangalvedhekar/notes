@@ -1,5 +1,6 @@
 import type { LiveValidationItem } from '../LiveValidation';
 import type { FormTouched, FormUi, FormValues } from './types';
+import { registrationIds } from '@notes/test-ids';
 
 const emailRegex = /\S+@\S+\.\S+/;
 
@@ -44,31 +45,31 @@ export const getPasswordValidationItems = (
 ): LiveValidationItem[] => [
   {
     key: 'min-length',
-    testID: 'password-min-length',
+    testID: registrationIds.passwordRules.minLength,
     message: 'Must be at least 8 characters long',
     isValid: passwordChecks.hasMinLength,
   },
   {
     key: 'uppercase',
-    testID: 'password-uppercase',
+    testID: registrationIds.passwordRules.uppercase,
     message: 'Must contain one uppercase letter',
     isValid: passwordChecks.hasUppercase,
   },
   {
     key: 'lowercase',
-    testID: 'password-lowercase',
+    testID: registrationIds.passwordRules.lowercase,
     message: 'Must contain one lowercase letter',
     isValid: passwordChecks.hasLowercase,
   },
   {
     key: 'special',
-    testID: 'password-special',
+    testID: registrationIds.passwordRules.special,
     message: 'Must contain one special character',
     isValid: passwordChecks.hasSpecialCharacter,
   },
   {
     key: 'digit',
-    testID: 'password-digit',
+    testID: registrationIds.passwordRules.digit,
     message: 'Must contain one digit',
     isValid: passwordChecks.hasDigit,
   },

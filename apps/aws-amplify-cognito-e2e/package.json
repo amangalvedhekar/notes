@@ -56,5 +56,8 @@
     "implicitDependencies": [
       "@notes/aws-amplify-cognito"
     ]
+  },
+  "dependencies": {
+    "@notes/test-ids": "*"
   }
 }

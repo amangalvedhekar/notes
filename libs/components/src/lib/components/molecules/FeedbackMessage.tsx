@@ -12,12 +12,14 @@ export type FeedbackMessageProps = FeedbackMessageBase & {
 export const FeedbackMessage = ({ message, type, testID }: FeedbackMessageProps) => {
 
   return (
-    <XStack flex={1} justifyContent="space-evenly">
-      <XStack flex={0.1} justifyContent="flex-start">
+    <XStack alignItems="center" gap="$2">
+      <XStack width={24} minWidth={24} justifyContent="center" alignItems="center">
         <Icon name={type} testID={`${testID}-icon`} />
       </XStack>
-      <XStack flex={0.9} justifyContent="flex-start">
-        <Paragraph testID={`${testID}-msg`}>{message}</Paragraph>
+      <XStack flex={1}>
+        <Paragraph flexShrink={1} testID={`${testID}-msg`}>
+          {message}
+        </Paragraph>
       </XStack>
     </XStack>
   );

@@ -15,6 +15,7 @@ import {
   initialUi,
   initialValues,
 } from './utility';
+import { useAuth } from '../../../hooks';
 //#endregion
 
 export const Registration = () => {
@@ -24,6 +25,7 @@ export const Registration = () => {
   const [ui, setUi] = useState<FormUi>(initialUi);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const {register} = useAuth();
   //#endregion
 
   //#region Field Helpers
@@ -55,15 +57,27 @@ export const Registration = () => {
   //#endregion
 
   //#region Actions
-  const onSubmit = () => {
-    setUi(prev => ({ ...prev, isSubmitted: true, serverError: null }));
+  const onSubmit = async () => {
+    try {
+      setUi((prev) => ({ ...prev, isSubmitted: true, serverError: null }));
 
-    if (!canSubmit) {
-      return;
+      if (!canSubmit) {
+        return;
+      }
+
+      setUi((prev) => ({ ...prev, isSubmitting: true }));
+      await register({
+        username: values.email,
+        password: values.password,
+      });
+
+    } catch (error: unknown) {
+      console.error(error);
+      setUi((prev) => ({ ...prev, serverError:"Something went wrong. Try again later" }));
+    } finally {
+      setUi(prev => ({ ...prev, isSubmitting: false }));
     }
 
-    // setUi(prev => ({ ...prev, isSubmitting: true }));
-    // setUi(prev => ({ ...prev, isSubmitting: false }));
   };
   //#endregion
 

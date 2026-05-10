@@ -6,7 +6,11 @@ import { rootRoute } from './app';
 
 const HomePage = () => {
   return (
-   <Registration />
+    <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+      <div style={{ width: '100%', maxWidth: 760 }}>
+        <Registration />
+      </div>
+    </div>
   );
 };
 

@@ -7,6 +7,7 @@
     "@react-native/metro-config": "*",
     "react": "*",
     "react-native": "*",
+    "react-native-get-random-values": "^2.0.0",
     "react-native-svg": "*",
     "@testing-library/react-native": "*",
     "react-test-renderer": "*",
@@ -22,7 +23,8 @@
     "@vitejs/plugin-react": "*",
     "@nx/vite": "*",
     "esbuild": "*",
-    "@react-native-async-storage/async-storage": "*"
+    "@react-native-async-storage/async-storage": "*",
+    "react-native-url-polyfill": "*"
   },
   "devDependencies": {}
 }

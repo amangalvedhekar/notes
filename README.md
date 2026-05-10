@@ -22,6 +22,10 @@ Currently has:
 Currently has:
   
 - `aws-amplify-cognito`
-  - uses react-native, aws cognito and components library
+  - uses react-native, aws-cognito and components library
 - `aws-amplify-cognito-web`
-  - uses react, aws cognito and components library 
+  - uses React, aws-cognito and components library 
+- `docs`
+  - uses Storybook and components library
+- `docs-mobile`
+  - uses Storybook for native and components library

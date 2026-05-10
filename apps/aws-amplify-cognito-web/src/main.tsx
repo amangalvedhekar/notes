@@ -4,12 +4,12 @@ import { RouterProvider } from '@tanstack/react-router';
 import { ThemeProvider, Amplify, AuthProvider } from '@notes/components';
 import { router } from './router';
 
-
+// setup env
 Amplify.configure({
   Auth: {
     Cognito: {
-      userPoolId: 'us-east-1_ZOcHnet4',
-      userPoolClientId: '33g22bd3smodccocnl6r8af7d3',
+      userPoolId: '',
+      userPoolClientId: '',
     },
   },
 });

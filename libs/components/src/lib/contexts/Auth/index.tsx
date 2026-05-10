@@ -6,6 +6,7 @@ import {
   CreateUserProps,
 } from './types';
 import { signUp, confirmSignUp } from 'aws-amplify/auth';
+import { Amplify } from 'aws-amplify';
 
 const AuthContext = createContext<AuthProviderProps | null>(null);
 
@@ -44,4 +45,4 @@ const AuthProvider = ({ children }: AuthContextType) => {
   );
 };
 
-export { AuthContext, AuthProvider };
+export { AuthContext, AuthProvider, Amplify };

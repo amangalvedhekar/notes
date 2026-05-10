@@ -116,3 +116,11 @@ yarn-error.log
 test-output
 
 vite.config.*.timestamp*
+vitest.config.*.timestamp*
+
+storybook-static
+
+# App env files
+apps/aws-amplify-cognito/.env
+apps/aws-amplify-cognito-web/.env
+apps/aws-amplify-cognito-web/.env.local

@@ -1,0 +1,8 @@
+{
+  "name": "@notes/aws-amplify-cognito-web",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@notes/components": "0.0.1"
+  }
+}

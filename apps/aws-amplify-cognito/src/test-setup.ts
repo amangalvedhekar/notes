@@ -15,3 +15,11 @@ jest.mock('@aws-amplify/react-native', () => ({
     addEventListener: jest.fn(),
   })),
 }));
+
+jest.mock('react-native-config', () => ({
+  __esModule: true,
+  default: {
+    AWS_COGNITO_USER_POOL_ID: 'us-east-1_example',
+    AWS_COGNITO_USER_POOL_CLIENT_ID: 'exampleclientid',
+  },
+}));

@@ -1,4 +1,4 @@
-import type { LiveValidationItem } from '@notes/components';
+import type { LiveValidationItem } from '../LiveValidation';
 import type { FormTouched, FormUi, FormValues } from './types';
 
 const emailRegex = /\S+@\S+\.\S+/;

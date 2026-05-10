@@ -5,3 +5,4 @@ export * from './lib/components/molecules';
 export * from './lib/components/templates';
 export * from './lib/hooks';
 export * from './lib/components/icons';
+export * from './lib/components/catalog';

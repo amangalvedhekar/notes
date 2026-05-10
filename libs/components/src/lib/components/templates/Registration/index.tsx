@@ -84,14 +84,15 @@ export const Registration = () => {
   //#region Render
   return (
     <ScrollView
+      testID="registration-screen"
       contentInsetAdjustmentBehavior="automatic"
       automaticallyAdjustKeyboardInsets
       contentContainerStyle={{ margin: 8 }}
     >
       <YStack flex={1} justifyContent="space-between">
         <YStack gap="$1">
-          <H1 color="purple">Registration</H1>
-          <H2 fontWeight="bold">Create an account</H2>
+          <H1 testID="registration-title" color="purple">Registration</H1>
+          <H2 testID="registration-subtitle" fontWeight="bold">Create an account</H2>
           <InputWithLabel
             labelText="Email"
             size="$6"
@@ -170,23 +171,9 @@ export const Registration = () => {
             borderRadius="$8"
             size="$4"
             onPress={onSubmit}
-            disabled={!canSubmit}
             isLoading={ui.isSubmitting}
           >
             Register
-          </Button>
-        </YStack>
-        <YStack marginTop="$4">
-          <Paragraph textAlign="center" fontWeight="bold">
-            Already have an account?
-          </Paragraph>
-          <Button
-            marginHorizontal="$2"
-            borderRadius="$8"
-            size="$4"
-            onPress={console.log}
-          >
-            Login
           </Button>
         </YStack>
       </YStack>

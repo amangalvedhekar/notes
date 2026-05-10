@@ -17,6 +17,9 @@
     },
     {
       "path": "./apps/docs-mobile"
+    },
+    {
+      "path": "./apps/aws-amplify-cognito-e2e"
     }
   ]
 }

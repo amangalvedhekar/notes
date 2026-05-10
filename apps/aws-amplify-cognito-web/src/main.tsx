@@ -4,12 +4,21 @@ import { RouterProvider } from '@tanstack/react-router';
 import { ThemeProvider, Amplify, AuthProvider } from '@notes/components';
 import { router } from './router';
 
-// setup env
+const userPoolId = import.meta.env.VITE_AWS_COGNITO_USER_POOL_ID ?? '';
+const userPoolClientId =
+  import.meta.env.VITE_AWS_COGNITO_USER_POOL_CLIENT_ID ?? '';
+
+if (!userPoolId || !userPoolClientId) {
+  console.warn(
+    'Missing AWS Cognito env vars. Set VITE_AWS_COGNITO_USER_POOL_ID and VITE_AWS_COGNITO_USER_POOL_CLIENT_ID in apps/aws-amplify-cognito-web/.env.'
+  );
+}
+
 Amplify.configure({
   Auth: {
     Cognito: {
-      userPoolId: '',
-      userPoolClientId: '',
+      userPoolId,
+      userPoolClientId,
     },
   },
 });

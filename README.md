@@ -1,31 +1,59 @@
 # Notes
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+Nx monorepo for cross-platform experiments with shared UI components.
 
-## Motivation
+## Workspace
 
-Monorepo setup to have code samples of various technologies i have worked with
+### Libraries
 
-## Setup
+- `@notes/components` (`libs/components`)
+  - Shared Tamagui-based component library.
 
-`libs` to include packages that can be submitted and used across different projects
+### Applications
 
-Currently has:
+- `@notes/aws-amplify-cognito` (`apps/aws-amplify-cognito`)
+  - React Native app using AWS Amplify Cognito and `@notes/components`.
+- `@notes/aws-amplify-cognito-web` (`apps/aws-amplify-cognito-web`)
+  - Web app using the same auth flow and shared components.
+- `@notes/docs` (`apps/docs`)
+  - Web Storybook/docs app for component documentation.
+- `@notes/docs-mobile` (`apps/docs-mobile`)
+  - React Native docs/demo app.
 
-- `components`
-  - A wrapper around Tamagui to follow atomic design guidelines and build universal components
-- `utility`
-  - Functions that can be used across different apps
+## Getting Started
 
-`apps` to include apps that can be native or web
+```bash
+npm install
+npx nx show projects
+```
 
-Currently has:
-  
-- `aws-amplify-cognito`
-  - uses react-native, aws-cognito and components library
-- `aws-amplify-cognito-web`
-  - uses React, aws-cognito and components library 
-- `docs`
-  - uses Storybook and components library
-- `docs-mobile`
-  - uses Storybook for native and components library
+## Common Commands
+
+Run a web app in dev mode:
+
+```bash
+npx nx dev @notes/aws-amplify-cognito-web
+```
+
+Run Storybook/docs:
+
+```bash
+npx nx storybook @notes/docs
+```
+
+Start React Native app (Metro + platform run):
+
+```bash
+npx nx start @notes/aws-amplify-cognito
+npx nx run-ios @notes/aws-amplify-cognito
+# or
+npx nx run-android @notes/aws-amplify-cognito
+```
+
+Run checks:
+
+```bash
+npx nx lint @notes/components
+npx nx test @notes/components
+npx nx typecheck @notes/components
+```

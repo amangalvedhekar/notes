@@ -125,4 +125,6 @@ apps/aws-amplify-cognito/.env
 apps/aws-amplify-cognito-web/.env
 apps/aws-amplify-cognito-web/.env.local
 
+# Detox artifacts
 apps/aws-amplify-cognito-e2e/artifacts
+apps/aws-amplify-cognito-e2e/apps/aws-amplify-cognito-e2e/artifacts

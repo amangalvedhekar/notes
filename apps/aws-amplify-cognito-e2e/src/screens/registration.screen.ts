@@ -72,6 +72,7 @@ export class RegistrationScreen {
 
   async setConfirmPassword(value: string) {
     await this.confirmPasswordInput.replaceText(value);
+    await this.confirmPasswordInput.tapReturnKey();
   }
 
   async acceptLegalAgreement() {

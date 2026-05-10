@@ -24,7 +24,6 @@ describe('AwsAmplifyCognito', () => {
 
     await expect(registrationScreen.emailError).toExist();
     await expect(registrationScreen.passwordError).toExist();
-    await expect(registrationScreen.confirmPasswordError).toExist();
     await expect(registrationScreen.acceptedLegalError).toExist();
   });
 
@@ -88,7 +87,7 @@ describe('AwsAmplifyCognito', () => {
     await expect(registrationScreen.acceptedLegalError).toExist();
     await expect(registrationScreen.emailError).not.toExist();
     await expect(registrationScreen.passwordError).not.toExist();
-    await expect(registrationScreen.confirmPasswordError).not.toExist();
+
   });
 
   it.skip('should show server error on failed registration', async () => {

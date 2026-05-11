@@ -61,6 +61,22 @@ Run React Native app on Android only:
 npx nx run-android @notes/aws-amplify-cognito
 ```
 
+Run docs mobile app (React Native):
+
+```bash
+# install/update iOS pods (first run, and after native dependency changes)
+npx nx pod-install @notes/docs-mobile
+
+# Metro bundler
+npx nx start @notes/docs-mobile
+
+# iOS app
+npx nx run-ios @notes/docs-mobile
+
+# Android app
+npx nx run-android @notes/docs-mobile
+```
+
 Run checks:
 
 ```bash

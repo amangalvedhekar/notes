@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Registration } from '@notes/components';
+import { AuthContext, Registration } from '@notes/components';
+
+const mockAuthContextValue = {
+  register: async () => {},
+  confirmUser: async () => {},
+};
 
 const meta: Meta<typeof Registration> = {
   component: Registration,
@@ -7,16 +12,18 @@ const meta: Meta<typeof Registration> = {
   title: 'Templates/Registration',
   decorators: [
     (Story) => (
-      <div
-        style={{
-          margin: '0 auto',
-          maxWidth: 460,
-          minHeight: 760,
-          padding: 24,
-        }}
-      >
-        <Story />
-      </div>
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <div
+          style={{
+            margin: '0 auto',
+            maxWidth: 460,
+            minHeight: 760,
+            padding: 24,
+          }}
+        >
+          <Story />
+        </div>
+      </AuthContext.Provider>
     ),
   ],
 };

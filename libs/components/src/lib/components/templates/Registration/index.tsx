@@ -7,6 +7,7 @@ import { Hide, Lock, Profile, Show, Unlock } from '../../icons';
 import { InputWithLabel } from '../../molecules';
 import { LiveValidation } from '../LiveValidation';
 import type { FormTouched, FormUi, FormValues } from './types';
+import { registrationIds } from '@notes/test-ids';
 import {
   getErrors,
   getPasswordChecks,
@@ -72,7 +73,9 @@ export const Registration = () => {
       });
 
     } catch (error: unknown) {
+      // ToDo: Danger file to detect console
       console.error(error);
+      // ToDo: map error from AWS for user friendly messages
       setUi((prev) => ({ ...prev, serverError:"Something went wrong. Try again later" }));
     } finally {
       setUi(prev => ({ ...prev, isSubmitting: false }));
@@ -84,32 +87,36 @@ export const Registration = () => {
   //#region Render
   return (
     <ScrollView
+      testID={registrationIds.screen}
       contentInsetAdjustmentBehavior="automatic"
       automaticallyAdjustKeyboardInsets
-      contentContainerStyle={{ margin: 8 }}
+      contentContainerStyle={{ margin: 8, paddingBottom: 24 }}
     >
       <YStack flex={1} justifyContent="space-between">
         <YStack gap="$1">
-          <H1 color="purple">Registration</H1>
-          <H2 fontWeight="bold">Create an account</H2>
+          <H1 testID={registrationIds.title} color="purple">Registration</H1>
+          <H2 testID={registrationIds.subtitle} fontWeight="bold">Create an account</H2>
           <InputWithLabel
             labelText="Email"
             size="$6"
             placeholder="test@example.com"
             enablesReturnKeyAutomatically
-            id="email"
+            id={registrationIds.emailInput}
+            testID={registrationIds.emailInput}
             leftIcon={<Profile />}
             value={values.email}
             onChangeText={(value) => setField('email', value)}
             onBlur={() => touchField('email')}
             isInvalid={showError('email')}
+            errorTestID={registrationIds.emailError}
             errorMessage={errors.email ?? undefined}
             autoCapitalize="none"
             keyboardType="email-address"
           />
           <InputWithLabel
             labelText="Password"
-            id="password"
+            id={registrationIds.passwordInput}
+            testID={registrationIds.passwordInput}
             size="$6"
             placeholder="password"
             leftIcon={showPassword ? <Unlock /> : <Lock />}
@@ -119,6 +126,7 @@ export const Registration = () => {
             onChangeText={(value) => setField('password', value)}
             onBlur={() => touchField('password')}
             isInvalid={showError('password')}
+            errorTestID={registrationIds.passwordError}
             errorMessage={errors.password ?? undefined}
             secureTextEntry={!showPassword}
           />
@@ -128,7 +136,8 @@ export const Registration = () => {
           />
           <InputWithLabel
             labelText="Confirm Password"
-            id="confirmPassword"
+            id={registrationIds.confirmPasswordInput}
+            testID={registrationIds.confirmPasswordInput}
             placeholder="confirm password"
             size="$6"
             leftIcon={showConfirmPassword ? <Unlock /> : <Lock />}
@@ -138,12 +147,14 @@ export const Registration = () => {
             onChangeText={(value) => setField('confirmPassword', value)}
             onBlur={() => touchField('confirmPassword')}
             isInvalid={showError('confirmPassword')}
+            errorTestID={registrationIds.confirmPasswordError}
             errorMessage={errors.confirmPassword ?? undefined}
             secureTextEntry={!showConfirmPassword}
           />
           <YStack margin="$2">
             <Checkbox
-              id="tos-pp-agreement"
+              id={registrationIds.legalAgreementCheckbox}
+              testID={registrationIds.legalAgreementCheckbox}
               size="$6"
               labelText="Terms of Service"
               checked={values.acceptedLegal}
@@ -156,37 +167,28 @@ export const Registration = () => {
               I accept the terms and condition as well as the privacy policy
             </Paragraph>
             {showError('acceptedLegal') ? (
-              <Paragraph color="red">{errors.acceptedLegal}</Paragraph>
+              <Paragraph testID={registrationIds.acceptedLegalError} color="red">
+                {errors.acceptedLegal}
+              </Paragraph>
             ) : null}
           </YStack>
           {ui.serverError ? (
             <YStack margin="$2">
-              <Paragraph color="red">{ui.serverError}</Paragraph>
+              <Paragraph testID={registrationIds.serverError} color="red">
+                {ui.serverError}
+              </Paragraph>
             </YStack>
           ) : null}
           <Button
+            testID={registrationIds.submitButton}
             themeInverse
             marginHorizontal="$2"
             borderRadius="$8"
             size="$4"
             onPress={onSubmit}
-            disabled={!canSubmit}
             isLoading={ui.isSubmitting}
           >
             Register
-          </Button>
-        </YStack>
-        <YStack marginTop="$4">
-          <Paragraph textAlign="center" fontWeight="bold">
-            Already have an account?
-          </Paragraph>
-          <Button
-            marginHorizontal="$2"
-            borderRadius="$8"
-            size="$4"
-            onPress={console.log}
-          >
-            Login
           </Button>
         </YStack>
       </YStack>

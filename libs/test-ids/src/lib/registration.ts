@@ -1,0 +1,22 @@
+export const registrationIds = {
+  screen: 'registration-screen',
+  title: 'registration-title',
+  subtitle: 'registration-subtitle',
+  emailInput: 'email',
+  emailError: 'registration-email-error',
+  passwordInput: 'password',
+  passwordError: 'registration-password-error',
+  confirmPasswordInput: 'confirmPassword',
+  confirmPasswordError: 'registration-confirm-password-error',
+  legalAgreementCheckbox: 'tos-pp-agreement',
+  acceptedLegalError: 'registration-accepted-legal-error',
+  serverError: 'registration-server-error',
+  submitButton: 'registration-submit-button',
+  passwordRules: {
+    minLength: 'password-min-length',
+    uppercase: 'password-uppercase',
+    lowercase: 'password-lowercase',
+    special: 'password-special',
+    digit: 'password-digit',
+  },
+} as const;

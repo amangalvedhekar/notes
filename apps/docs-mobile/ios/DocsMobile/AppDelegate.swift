@@ -7,8 +7,12 @@ import ReactAppDependencyProvider
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
-  var reactNativeDelegate: ReactNativeDelegate?
-  var reactNativeFactory: RCTReactNativeFactory?
+  @objc var reactNativeDelegate: ReactNativeDelegate?
+  @objc var reactNativeFactory: RCTReactNativeFactory?
+
+  @objc func rootViewFactory() -> RCTRootViewFactory? {
+    reactNativeFactory?.rootViewFactory
+  }
 
   func application(
     _ application: UIApplication,
@@ -40,7 +44,7 @@ class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
 
   override func bundleURL() -> URL? {
 #if DEBUG
-    RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "src/main")
+    RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "src/main", fallbackExtension: nil)
 #else
     Bundle.main.url(forResource: "main", withExtension: "jsbundle")
 #endif

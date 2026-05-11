@@ -1,0 +1,63 @@
+{
+  "name": "@notes/aws-amplify-cognito-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "build-ios": {
+        "executor": "@nx/detox:build",
+        "options": {
+          "detoxConfiguration": "ios.sim.debug"
+        },
+        "configurations": {
+          "production": {
+            "detoxConfiguration": "ios.sim.release"
+          }
+        }
+      },
+      "test-ios": {
+        "executor": "@nx/detox:test",
+        "options": {
+          "detoxConfiguration": "ios.sim.debug",
+          "buildTarget": "@notes/aws-amplify-cognito-e2e:build-ios"
+        },
+        "configurations": {
+          "production": {
+            "detoxConfiguration": "ios.sim.release",
+            "buildTarget": "@notes/aws-amplify-cognito-e2e:build-ios:production"
+          }
+        }
+      },
+      "build-android": {
+        "executor": "@nx/detox:build",
+        "options": {
+          "detoxConfiguration": "android.emu.debug"
+        },
+        "configurations": {
+          "production": {
+            "detoxConfiguration": "android.emu.release"
+          }
+        }
+      },
+      "test-android": {
+        "executor": "@nx/detox:test",
+        "options": {
+          "detoxConfiguration": "android.emu.debug",
+          "buildTarget": "@notes/aws-amplify-cognito-e2e:build-android"
+        },
+        "configurations": {
+          "production": {
+            "detoxConfiguration": "android.emu.release",
+            "buildTarget": "@notes/aws-amplify-cognito-e2e:build-android:production"
+          }
+        }
+      }
+    },
+    "implicitDependencies": [
+      "@notes/aws-amplify-cognito"
+    ]
+  },
+  "dependencies": {
+    "@notes/test-ids": "*"
+  }
+}

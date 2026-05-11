@@ -1,15 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Registration } from '@notes/components';
+import { AuthContext, Registration } from '@notes/components';
 import { View } from 'react-native';
+
+const mockAuthContextValue = {
+  register: async () => {},
+  confirmUser: async () => {},
+};
 
 const meta: Meta<typeof Registration> = {
   component: Registration,
   title: 'Templates/Registration',
   decorators: [
     (Story) => (
-      <View style={{ minHeight: 760, paddingHorizontal: 12 }}>
-        <Story />
-      </View>
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <View style={{ minHeight: 760, paddingHorizontal: 12 }}>
+          <Story />
+        </View>
+      </AuthContext.Provider>
     ),
   ],
 };

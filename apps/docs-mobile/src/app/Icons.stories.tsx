@@ -9,7 +9,10 @@ type IconComponent = ComponentType<SvgProps>;
 type IconModule = Record<string, IconComponent>;
 type IconName = keyof typeof iconComponents;
 type IconStoryArgs = {
+  color?: string;
+  height: number;
   icon: IconName;
+  width: number;
 };
 type IconRequireContext = {
   keys: () => string[];
@@ -62,13 +65,17 @@ const IconsGallery = ({ theme }: { theme: unknown }) => (
   </View>
 );
 
-const SelectedIcon = ({ icon, theme }: IconStoryArgs & { theme: unknown }) => {
-  const Component = iconComponents[icon];
-  const color = getIconColor(theme);
+const SelectedIcon = ({ color, height, icon, theme, width }: IconStoryArgs & { theme: unknown }) => {
+  const Component = iconComponents[icon] ?? iconComponents[iconNames[0]];
+  const resolvedColor = color ?? getIconColor(theme);
+
+  if (!Component) {
+    return null;
+  }
 
   return (
     <View style={styles.selected}>
-      <Component color={color} height={48} stroke={color} width={48} />
+      <Component color={resolvedColor} height={height} stroke={resolvedColor} width={width} />
       <Text style={[styles.label, { color: getLabelColor(theme) }]}>{icon}</Text>
     </View>
   );
@@ -77,12 +84,24 @@ const SelectedIcon = ({ icon, theme }: IconStoryArgs & { theme: unknown }) => {
 const meta: Meta<IconStoryArgs> = {
   title: 'Icons/All',
   args: {
+    color: undefined,
+    height: 48,
     icon: iconNames[0],
+    width: 48,
   },
   argTypes: {
+    color: {
+      control: 'color',
+    },
+    height: {
+      control: 'number',
+    },
     icon: {
       control: 'select',
       options: iconNames,
+    },
+    width: {
+      control: 'number',
     },
   },
 };
@@ -96,7 +115,15 @@ export const All: Story = {
 };
 
 export const Selected: Story = {
-  render: (args, context) => <SelectedIcon {...args} theme={context.globals.theme} />,
+  args: {
+    color: undefined,
+    height: 48,
+    icon: iconNames[0],
+    width: 48,
+  },
+  render: (args, context) => (
+    <SelectedIcon key={String(args.icon)} {...args} theme={context.globals.theme} />
+  ),
 };
 
 const styles = StyleSheet.create({

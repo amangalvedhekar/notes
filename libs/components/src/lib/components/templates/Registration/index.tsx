@@ -184,7 +184,7 @@ export const Registration = () => {
             themeInverse
             marginHorizontal="$2"
             borderRadius="$8"
-            size="$4"
+            size="$6"
             onPress={onSubmit}
             isLoading={ui.isSubmitting}
           >

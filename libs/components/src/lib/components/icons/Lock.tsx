@@ -1,9 +1,9 @@
 import Svg, { Path, SvgProps } from 'react-native-svg';
 
-export const Lock = ({ width = 24, height=24, ...rest }: SvgProps) => (
+export const Lock = ({ width = 24, height=24,color="#fff", ...rest }: SvgProps) => (
   <Svg width={width} height={height} fill="none" viewBox="0 0 24 24" {...rest}>
     <Path
-      stroke="#000"
+      stroke={color}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1}

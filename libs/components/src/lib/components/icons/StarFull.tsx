@@ -12,4 +12,3 @@ export const StarFull = ({ width = 32, height = 32, color = '#fff', ...props }: 
   </Svg>
 );
 
-

@@ -58,6 +58,6 @@
     ]
   },
   "dependencies": {
-    "@notes/test-ids": "*"
+    "@notes/test-ids": "0.0.1"
   }
 }

@@ -19,7 +19,7 @@
   ],
   "references": [
     {
-      "path": "../../libs/test-ids/tsconfig.lib.json"
+      "path": "../../libs/test-ids"
     }
   ]
 }

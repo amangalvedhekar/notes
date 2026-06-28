@@ -6,7 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import type { SvgProps } from 'react-native-svg';
 
 type IconComponent = ComponentType<SvgProps>;
-type IconModule = Record<string, IconComponent>;
+type IconModule = Record<string, unknown>;
 type IconName = keyof typeof iconComponents;
 type IconStoryArgs = {
   color?: string;
@@ -25,18 +25,20 @@ const iconContext = require.context(
   /\.tsx$/
 ) as IconRequireContext;
 
+const isIconComponent = (entry: [string, unknown]): entry is [string, IconComponent] =>
+  entry[0] !== 'default' && /^[A-Z]/.test(entry[0]) && typeof entry[1] === 'function';
+
 const icons = iconContext
   .keys()
-  .map((path) => {
-    const name = path.replace('./', '').replace('.tsx', '');
-    const module = iconContext(path);
-
-    return {
-      Component: module[name],
-      name,
-    };
-  })
-  .filter((icon): icon is { Component: IconComponent; name: string } => !!icon.Component)
+  .flatMap((path) =>
+    Object.entries(iconContext(path))
+      .filter(isIconComponent)
+      .map(([name, Component]) => ({ Component, name }))
+  )
+  .filter(
+    (icon, index, collection) =>
+      collection.findIndex((candidate) => candidate.name === icon.name) === index
+  )
   .sort((firstIcon, secondIcon) => firstIcon.name.localeCompare(secondIcon.name));
 
 const iconComponents = Object.fromEntries(

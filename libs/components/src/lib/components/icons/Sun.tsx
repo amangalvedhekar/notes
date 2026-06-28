@@ -11,4 +11,3 @@ export const Sun = ({ width = 32, height = 32, color = '#fff', ...props }: SvgPr
     />
   </Svg>
 );
-

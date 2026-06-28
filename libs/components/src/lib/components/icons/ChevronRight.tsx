@@ -2,7 +2,7 @@ import Svg, { Path, SvgProps } from 'react-native-svg';
 
 export const ChevronRight = ({ width = 32, height = 32, color = '#fff', ...props }: SvgProps) => (
   <Svg width={width} height={height} fill="none" viewBox="0 0 24 24" {...props}>
-    <Path  d="M0 0h24v24H0z" />
+
     <Path
       stroke={color}
       strokeLinecap="round"

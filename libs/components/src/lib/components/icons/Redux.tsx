@@ -1,6 +1,6 @@
 import Svg, { Path, SvgProps } from 'react-native-svg';
 
-export const ReduxIcon = ({ width = 32, height = 32, color = '#fff', ...props }: SvgProps) => (
+export const Redux = ({ width = 32, height = 32, color = '#fff', ...props }: SvgProps) => (
 <Svg
         width={width}
         height={height}

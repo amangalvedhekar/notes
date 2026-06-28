@@ -8,4 +8,3 @@ export const Moon = ({ width = 32, height = 32, color = '#fff', ...props }: SvgP
     />
   </Svg>
 );
-

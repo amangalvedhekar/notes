@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import { fileURLToPath } from 'node:url';
 
 export default defineConfig(() => ({
   root: import.meta.dirname,
@@ -14,12 +15,20 @@ export default defineConfig(() => ({
     'process.env': {},
   },
   resolve: {
-    alias: {
-      'react-native': 'react-native-web',
-      'react-native-svg': 'react-native-svg-web',
-      '@react-native/assets-registry/registry':
-        'react-native-web/dist/modules/AssetRegistry/index',
-    },
+    alias: [
+      {
+        find: /^react-native\/Libraries\/Utilities\/codegenNativeComponent$/,
+        replacement: fileURLToPath(
+          new URL('./src/codegenNativeComponent.web.ts', import.meta.url)
+        ),
+      },
+      { find: 'react-native', replacement: 'react-native-web' },
+      { find: 'react-native-svg', replacement: 'react-native-svg-web' },
+      {
+        find: '@react-native/assets-registry/registry',
+        replacement: 'react-native-web/dist/modules/AssetRegistry/index',
+      },
+    ],
   },
   server: {
     port: 4200,
@@ -50,6 +59,16 @@ export default defineConfig(() => ({
     setupFiles: ['./src/test-setup.ts'],
     include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     reporters: ['default'],
+    server: {
+      deps: {
+        inline: [
+          /^react-native/,
+          /^@react-native/,
+          /^tamagui$/,
+          /^@tamagui/,
+        ],
+      },
+    },
     coverage: {
       reportsDirectory: './test-output/vitest/coverage',
       provider: 'v8' as const,

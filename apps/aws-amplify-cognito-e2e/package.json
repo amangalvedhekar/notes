@@ -4,6 +4,12 @@
   "private": true,
   "nx": {
     "targets": {
+      "build": {
+        "executor": "nx:noop"
+      },
+      "test": {
+        "executor": "nx:noop"
+      },
       "build-ios": {
         "executor": "@nx/detox:build",
         "options": {

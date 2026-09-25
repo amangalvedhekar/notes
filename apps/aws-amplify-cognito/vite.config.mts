@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import * as esbuild from 'esbuild';
 import { readFileSync } from 'fs';
+import { fileURLToPath } from 'node:url';
 
 const extensions = [
   '.mjs',
@@ -37,12 +38,20 @@ export default defineConfig({
   },
   resolve: {
     extensions,
-    alias: {
-      'react-native': 'react-native-web',
-      'react-native-svg': 'react-native-svg-web',
-      '@react-native/assets-registry/registry':
-        'react-native-web/dist/modules/AssetRegistry/index',
-    },
+    alias: [
+      {
+        find: 'react-native-config',
+        replacement: fileURLToPath(
+          new URL('./src/react-native-config.web.ts', import.meta.url)
+        ),
+      },
+      { find: 'react-native', replacement: 'react-native-web' },
+      { find: 'react-native-svg', replacement: 'react-native-svg-web' },
+      {
+        find: '@react-native/assets-registry/registry',
+        replacement: 'react-native-web/dist/modules/AssetRegistry/index',
+      },
+    ],
   },
   build: {
     reportCompressedSize: true,

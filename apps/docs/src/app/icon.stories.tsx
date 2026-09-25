@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Icon } from '@notes/components';
+import { Icon } from '@amangalvedhekar/components';
 
 const meta: Meta<typeof Icon> = {
   component: Icon,

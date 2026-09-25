@@ -7,7 +7,7 @@ import { Hide, Lock, Profile, Show, Unlock } from '../../icons';
 import { InputWithLabel } from '../../molecules';
 import { LiveValidation } from '../LiveValidation';
 import type { FormTouched, FormUi, FormValues } from './types';
-import { registrationIds } from '@notes/test-ids';
+import { registrationIds } from '@amangalvedhekar/test-ids';
 import {
   getErrors,
   getPasswordChecks,

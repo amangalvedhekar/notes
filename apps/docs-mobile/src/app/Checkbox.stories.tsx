@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Checkbox } from '@notes/components';
+import { Checkbox } from '@amangalvedhekar/components';
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,

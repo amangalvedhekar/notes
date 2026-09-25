@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { componentCatalog } from '@notes/components';
+import { componentCatalog } from '@amangalvedhekar/components';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 const componentSections = [
@@ -33,7 +33,7 @@ export const Main: Story = {
       <View style={styles.container}>
         <Text style={styles.title}>Components Documentation</Text>
         <Text style={styles.description}>
-          This Storybook documents the UI components in @notes/components. These components are wrappers around
+          This Storybook documents the UI components in @amangalvedhekar/components. These components are wrappers around
           Tamagui (https://tamagui.dev/).
         </Text>
 

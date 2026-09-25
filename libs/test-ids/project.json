@@ -1,0 +1,17 @@
+{
+  "name": "@amangalvedhekar/test-ids",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/dist"],
+      "options": {
+        "cwd": "libs/test-ids",
+        "commands": [
+          "vite build",
+          "tsc --build tsconfig.lib.json --force"
+        ],
+        "parallel": false
+      }
+    }
+  }
+}

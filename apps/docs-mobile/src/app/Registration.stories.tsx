@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { AuthContext, Registration } from '@notes/components';
+import { AuthContext, Registration } from '@amangalvedhekar/components';
 import { View } from 'react-native';
 
 const mockAuthContextValue = {

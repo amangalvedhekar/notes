@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { FeedbackMessage } from '@notes/components';
+import { FeedbackMessage } from '@amangalvedhekar/components';
 
 const meta: Meta<typeof FeedbackMessage> = {
   component: FeedbackMessage,

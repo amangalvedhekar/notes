@@ -1,5 +1,5 @@
 import { by, element, waitFor } from 'detox';
-import { registrationIds } from '@notes/test-ids';
+import { registrationIds } from '@amangalvedhekar/test-ids';
 
 export class RegistrationScreen {
   get root() {

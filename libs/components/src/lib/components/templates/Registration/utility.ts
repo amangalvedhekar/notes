@@ -1,6 +1,6 @@
 import type { LiveValidationItem } from '../LiveValidation';
 import type { FormTouched, FormUi, FormValues } from './types';
-import { registrationIds } from '@notes/test-ids';
+import { registrationIds } from '@amangalvedhekar/test-ids';
 
 const emailRegex = /\S+@\S+\.\S+/;
 

@@ -6,13 +6,15 @@ Nx monorepo for cross-platform experiments with shared UI components.
 
 ### Libraries
 
-- `@notes/components` (`libs/components`)
+- `@amangalvedhekar/components` (`libs/components`)
   - Shared Tamagui-based component library.
+- `@amangalvedhekar/test-ids` (`libs/test-ids`)
+  - Stable identifiers shared by components and end-to-end tests.
 
 ### Applications
 
 - `@notes/aws-amplify-cognito` (`apps/aws-amplify-cognito`)
-  - React Native app using AWS Amplify Cognito and `@notes/components`.
+  - React Native app using AWS Amplify Cognito and `@amangalvedhekar/components`.
 - `@notes/aws-amplify-cognito-web` (`apps/aws-amplify-cognito-web`)
   - Web app using the same auth flow and shared components.
 - `@notes/docs` (`apps/docs`)
@@ -80,9 +82,25 @@ npx nx run-android @notes/docs-mobile
 Run checks:
 
 ```bash
-npx nx lint @notes/components
-npx nx test @notes/components
-npx nx typecheck @notes/components
+npx nx lint @amangalvedhekar/components
+npx nx test @amangalvedhekar/components
+npx nx typecheck @amangalvedhekar/components
+```
+
+## Publishing packages
+
+The two libraries are independently versioned and published to GitHub Packages.
+
+1. Preview a release with `npm run release:dry-run`.
+2. Create the version commit and tags with `npm run release -- patch` (or choose the versions interactively with `npm run release`).
+3. Push the commit and tags, then create a GitHub release from one of the generated tags.
+
+Publishing the GitHub release runs `.github/workflows/publish-packages.yml`. The workflow builds, checks, and publishes any package version that is not already present. It authenticates with the repository's `GITHUB_TOKEN`; no package token needs to be stored as a secret.
+
+Consumers need the repository `.npmrc` scope mapping and a GitHub token with `read:packages`:
+
+```ini
+@amangalvedhekar:registry=https://npm.pkg.github.com
 ```
 
 Run Detox E2E (AWS Amplify Cognito app):

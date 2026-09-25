@@ -12,7 +12,7 @@ vi.mock('tamagui', () => ({
   H1: (props: ComponentProps<'h1'>) => <h1 {...props} />,
 }));
 
-vi.mock('@notes/components', () => ({
+vi.mock('@amangalvedhekar/components', () => ({
   Registration: () => <div>Registration</div>,
 }));
 

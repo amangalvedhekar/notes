@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import type { Preview } from '@storybook/react-native';
-import { ThemeProvider } from '@notes/components';
+import { ThemeProvider } from '@amangalvedhekar/components';
 
 const themeOptions = ['light', 'dark'] as const;
 

@@ -177,7 +177,7 @@ export const Selected: Story = {
         transform: (_code: string, context: { args: IconStoryArgs }) => {
           const icon = context.args.icon;
 
-          return `import { ${icon} } from '@notes/components';
+          return `import { ${icon} } from '@amangalvedhekar/components';
 
 export const Example = () => (
   <${icon} color="currentColor" height={24} width={24} />

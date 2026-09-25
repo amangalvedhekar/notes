@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
-import { AuthProvider, Registration, ThemeProvider, Amplify } from '@notes/components';
+import { AuthProvider, Registration, ThemeProvider, Amplify } from '@amangalvedhekar/components';
 import Config from 'react-native-config';
 import {
   initialWindowMetrics,

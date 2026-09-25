@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { LiveValidation } from '@notes/components';
+import { LiveValidation } from '@amangalvedhekar/components';
 
 const validationItems = [
   {

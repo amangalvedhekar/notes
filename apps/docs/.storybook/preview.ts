@@ -1,5 +1,6 @@
 import { createElement } from 'react';
 import type { Preview } from '@storybook/react-vite';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from '@notes/components';
 
 const themeOptions = ['light', 'dark'] as const;
@@ -35,20 +36,25 @@ const preview: Preview = {
       const theme = getThemeName(context.globals.theme);
 
       return createElement(
-        ThemeProvider,
+        SafeAreaProvider,
         {
-          defaultTheme: theme,
           children: createElement(
-            'div',
+            ThemeProvider,
             {
-              style: {
-                backgroundColor: theme === 'dark' ? '#0b1220' : '#ffffff',
-                color: theme === 'dark' ? '#f8fafc' : '#111827',
-                minHeight: '100%',
-              },
+              defaultTheme: theme,
+              children: createElement(
+                'div',
+                {
+                  style: {
+                    backgroundColor: theme === 'dark' ? '#0b1220' : '#ffffff',
+                    color: theme === 'dark' ? '#f8fafc' : '#111827',
+                    minHeight: '100%',
+                  },
+                },
+                createElement(Story)
+              ),
             },
-            createElement(Story)
-          ),
+          )
         }
       );
     },

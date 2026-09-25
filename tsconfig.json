@@ -13,6 +13,9 @@
       "path": "./libs/test-ids"
     },
     {
+      "path": "./libs/coding-challenge"
+    },
+    {
       "path": "./apps/aws-amplify-cognito-web"
     },
     {

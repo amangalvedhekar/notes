@@ -107,6 +107,22 @@
       "dependsOn": ["^build"]
     }
   },
+  "release": {
+    "projects": [
+      "@amangalvedhekar/components",
+      "@amangalvedhekar/test-ids"
+    ],
+    "projectsRelationship": "independent",
+    "version": {
+      "currentVersionResolver": "disk",
+      "updateDependents": "auto"
+    },
+    "changelog": {
+      "workspaceChangelog": false,
+      "projectChangelogs": true,
+      "automaticFromRef": true
+    }
+  },
   "analytics": true,
   "generators": {
     "@nx/react": {

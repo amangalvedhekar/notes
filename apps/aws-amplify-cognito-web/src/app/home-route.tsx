@@ -1,7 +1,7 @@
 import { createRoute } from '@tanstack/react-router';
 import {
  Registration,
-} from '@notes/components';
+} from '@amangalvedhekar/components';
 import { rootRoute } from './app';
 
 const HomePage = () => {

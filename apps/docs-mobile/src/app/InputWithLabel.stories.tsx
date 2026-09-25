@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-native';
-import { Hide, InputWithLabel, Lock, Profile } from '@notes/components';
+import { Hide, InputWithLabel, Lock, Profile } from '@amangalvedhekar/components';
 
 const meta: Meta<typeof InputWithLabel> = {
   component: InputWithLabel,

@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 import type { Preview } from '@storybook/react-vite';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { ThemeProvider } from '@notes/components';
+import { ThemeProvider } from '@amangalvedhekar/components';
 
 const themeOptions = ['light', 'dark'] as const;
 

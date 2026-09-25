@@ -64,6 +64,6 @@
     ]
   },
   "dependencies": {
-    "@notes/test-ids": "0.0.1"
+    "@amangalvedhekar/test-ids": "0.0.1"
   }
 }

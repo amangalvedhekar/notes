@@ -2,7 +2,12 @@
   "name": "@notes/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build:packages": "nx run-many -t build -p @amangalvedhekar/test-ids @amangalvedhekar/components",
+    "release": "nx release",
+    "release:dry-run": "nx release --dry-run",
+    "release:publish": "nx release publish"
+  },
   "private": true,
   "dependencies": {
     "@aws-amplify/react-native": "1.3.1",

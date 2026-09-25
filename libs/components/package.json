@@ -1,21 +1,42 @@
 {
-  "name": "@notes/components",
+  "name": "@amangalvedhekar/components",
   "version": "0.0.1",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "description": "Cross-platform React and React Native components used by the notes applications.",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts",
-      "default": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
     },
     "./package.json": "./package.json"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "prepack": "vite build && tsc --build tsconfig.lib.json --force"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amangalvedhekar/notes.git",
+    "directory": "libs/components"
+  },
   "dependencies": {
-    "@notes/test-ids": "0.0.1"
+    "@amangalvedhekar/test-ids": "0.0.1"
   },
   "peerDependencies": {
+    "aws-amplify": "^6.15.9",
     "react": "19.2.0",
-    "react-native": "0.83.2"
+    "react-native": "0.83.2",
+    "react-native-safe-area-context": "^5.7.0",
+    "react-native-svg": "^15.15.1",
+    "tamagui": "^1.141.5"
   }
 }

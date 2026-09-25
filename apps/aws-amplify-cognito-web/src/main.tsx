@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { RouterProvider } from '@tanstack/react-router';
-import { ThemeProvider, Amplify, AuthProvider } from '@notes/components';
+import { ThemeProvider, Amplify, AuthProvider } from '@amangalvedhekar/components';
 import { router } from './router';
 
 const userPoolId = import.meta.env.VITE_AWS_COGNITO_USER_POOL_ID ?? '';

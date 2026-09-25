@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { AuthContext, Registration } from '@notes/components';
+import { AuthContext, Registration } from '@amangalvedhekar/components';
 
 const mockAuthContextValue = {
   register: async () => undefined,

@@ -17,6 +17,7 @@ import {
   initialValues,
 } from './utility';
 import { useAuth } from '../../../hooks';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 //#endregion
 
 export const Registration = () => {
@@ -27,6 +28,10 @@ export const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const {register} = useAuth();
+  //#endregion
+
+  //#region Hooks
+  const {top} = useSafeAreaInsets();
   //#endregion
 
   //#region Field Helpers
@@ -90,7 +95,7 @@ export const Registration = () => {
       testID={registrationIds.screen}
       contentInsetAdjustmentBehavior="automatic"
       automaticallyAdjustKeyboardInsets
-      contentContainerStyle={{ margin: 8, paddingBottom: 24 }}
+      contentContainerStyle={{ margin: 8, paddingBottom: 24, paddingTop: top }}
     >
       <YStack flex={1} justifyContent="space-between">
         <YStack gap="$1">
@@ -182,6 +187,7 @@ export const Registration = () => {
           <Button
             testID={registrationIds.submitButton}
             themeInverse
+
             marginHorizontal="$2"
             borderRadius="$8"
             size="$6"

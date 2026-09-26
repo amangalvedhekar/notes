@@ -2,6 +2,7 @@
 /// <reference types="node" />
 
 const createReactNativeJestConfig = (projectDir: string) => ({
+  cacheDirectory: `${projectDir}/out-tsc/jest-cache`,
   preset: 'react-native',
   resolver: '@nx/jest/plugins/resolver',
   moduleFileExtensions: ['ts', 'js', 'html', 'tsx', 'jsx'],

@@ -103,6 +103,9 @@
     }
   ],
   "targetDefaults": {
+    "build-storybook": {
+      "dependsOn": ["^build"]
+    },
     "test": {
       "dependsOn": ["^build"]
     }

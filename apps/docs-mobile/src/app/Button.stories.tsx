@@ -9,7 +9,6 @@ const meta: Meta<typeof Button> = {
     children: 'Register',
     isLoading: false,
     size: '$4',
-    themeInverse: true,
   },
   argTypes: {
     children: {

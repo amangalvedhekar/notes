@@ -186,8 +186,6 @@ export const Registration = () => {
           ) : null}
           <Button
             testID={registrationIds.submitButton}
-            themeInverse
-
             marginHorizontal="$2"
             borderRadius="$8"
             size="$6"

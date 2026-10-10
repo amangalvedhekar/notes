@@ -29,14 +29,17 @@
     "directory": "libs/components"
   },
   "dependencies": {
-    "@amangalvedhekar/test-ids": "0.0.1"
+    "@amangalvedhekar/test-ids": "0.0.1",
+    "@expo/ui": "55.0.17",
+    "expo": "55.0.31"
   },
   "peerDependencies": {
+    "@tamagui/config": "2.4.0",
     "aws-amplify": "^6.15.9",
     "react": "19.2.0",
     "react-native": "0.83.2",
     "react-native-safe-area-context": "^5.7.0",
     "react-native-svg": "^15.15.1",
-    "tamagui": "^1.141.5"
+    "tamagui": "^2.4.0"
   }
 }

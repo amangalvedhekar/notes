@@ -1,18 +1,11 @@
 import {TamaguiProvider} from 'tamagui';
 import { ThemeProviderProps } from './types';
 import {createTamagui} from "tamagui";
-import {
-  defaultConfig as tamaguiConfig,
-} from '@tamagui/config/v4';
+import { defaultConfig } from '@tamagui/config/v5';
 
-export const config = createTamagui({
-  ...tamaguiConfig,
-  tokens: {
-    ...tamaguiConfig.tokens,
-    color: {
-      success: '#ffffff',
-    }
-  }
+const config = createTamagui({
+  ...defaultConfig,
+
 });
 export const ThemeProvider = ({children, ...rest}: ThemeProviderProps) => {
   return (

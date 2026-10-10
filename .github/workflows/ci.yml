@@ -41,3 +41,103 @@ jobs:
       # Nx Cloud recommends fixes for failures to help you get CI green faster. Learn more: https://nx.dev/ci/features/self-healing-ci
       - run: npx nx fix-ci
         if: always()
+
+  detox-android:
+    name: Detox (Android)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+      ORG_GRADLE_PROJECT_reactNativeArchitectures: x86_64
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: tree:0
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26.10.0
+          cache: 'npm'
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - run: npm ci
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' \
+            | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Run Detox tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          profile: pixel_3a
+          avd-name: detox_ci_api_34
+          disable-animations: true
+          script: |
+            npx nx run @notes/aws-amplify-cognito-e2e:test-android:production \
+              --detoxConfiguration=android.emu.ci.release \
+              --artifactsLocation=artifacts \
+              --recordLogs=failing \
+              --takeScreenshots=failing
+
+      - name: Upload Detox artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: detox-android-artifacts
+          path: apps/aws-amplify-cognito-e2e/artifacts
+          if-no-files-found: ignore
+
+  detox-ios:
+    name: Detox (iOS)
+    runs-on: macos-15
+    timeout-minutes: 45
+    env:
+      NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: tree:0
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26.10.0
+          cache: 'npm'
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - run: npm ci
+
+      - name: Install CocoaPods dependencies
+        working-directory: apps/aws-amplify-cognito
+        run: |
+          bundle install
+          bundle exec pod install --project-directory=ios
+
+      - name: Run Detox tests
+        run: |
+          npx nx run @notes/aws-amplify-cognito-e2e:test-ios:production \
+            --artifactsLocation=artifacts \
+            --recordLogs=failing \
+            --takeScreenshots=failing
+
+      - name: Upload Detox artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: detox-ios-artifacts
+          path: apps/aws-amplify-cognito-e2e/artifacts
+          if-no-files-found: ignore

@@ -29,7 +29,9 @@
     "directory": "libs/components"
   },
   "dependencies": {
-    "@amangalvedhekar/test-ids": "0.0.1"
+    "@amangalvedhekar/test-ids": "0.0.1",
+    "@expo/ui": "55.0.17",
+    "expo": "55.0.31"
   },
   "peerDependencies": {
     "@tamagui/config": "2.4.0",

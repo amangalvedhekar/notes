@@ -83,12 +83,7 @@ jobs:
           profile: pixel_3a
           avd-name: detox_ci_api_34
           disable-animations: true
-          script: |
-            npx nx run @notes/aws-amplify-cognito-e2e:test-android:production \
-              --detoxConfiguration=android.emu.ci.release \
-              --artifactsLocation=artifacts \
-              --recordLogs=failing \
-              --takeScreenshots=failing
+          script: npx nx run @notes/aws-amplify-cognito-e2e:test-android:production --detoxConfiguration=android.emu.ci.release --artifactsLocation=artifacts --recordLogs=failing --takeScreenshots=failing
 
       - name: Upload Detox artifacts
         if: failure()
@@ -120,6 +115,11 @@ jobs:
           ruby-version: '3.3'
 
       - run: npm ci
+
+      - name: Install applesimutils
+        run: |
+          brew tap wix/brew
+          brew install applesimutils
 
       - name: Install CocoaPods dependencies
         working-directory: apps/aws-amplify-cognito

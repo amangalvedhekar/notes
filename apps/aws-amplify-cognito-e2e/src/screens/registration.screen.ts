@@ -68,6 +68,7 @@ export class RegistrationScreen {
 
   async setPassword(value: string) {
     await this.passwordInput.replaceText(value);
+    await this.passwordInput.tapReturnKey();
   }
 
   async setConfirmPassword(value: string) {

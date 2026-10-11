@@ -98,6 +98,39 @@ jobs:
           path: apps/aws-amplify-cognito-e2e/artifacts
           if-no-files-found: ignore
 
+  e2e-web:
+    name: E2E (Web)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: tree:0
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26.10.0
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run web E2E tests
+        run: npx nx run @notes/aws-amplify-cognito-web-e2e:e2e
+
+      - name: Upload Playwright artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-web-artifacts
+          path: apps/aws-amplify-cognito-web-e2e/test-output
+          if-no-files-found: ignore
+
   detox-ios:
     name: Detox (iOS)
     runs-on: macos-26

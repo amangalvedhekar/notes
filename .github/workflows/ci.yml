@@ -66,6 +66,11 @@ jobs:
           java-version: '17'
           cache: gradle
 
+      - name: Install Android emulator runtime libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes libpulse0
+
       - run: npm ci
 
       - name: Enable KVM
@@ -119,7 +124,8 @@ jobs:
       - name: Install applesimutils
         run: |
           brew tap wix/brew
-          brew install applesimutils
+          brew trust --formula wix/brew/applesimutils
+          brew install wix/brew/applesimutils
 
       - name: Install CocoaPods dependencies
         working-directory: apps/aws-amplify-cognito

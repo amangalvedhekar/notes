@@ -71,6 +71,7 @@ export class RegistrationScreen {
   }
 
   async setConfirmPassword(value: string) {
+    await this.root.scroll(200, 'down');
     await this.confirmPasswordInput.replaceText(value);
     await this.confirmPasswordInput.tapReturnKey();
   }

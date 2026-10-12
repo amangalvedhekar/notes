@@ -7,8 +7,14 @@ const createReactNativeJestConfig = (projectDir: string) => ({
   resolver: '@nx/jest/plugins/resolver',
   moduleFileExtensions: ['ts', 'js', 'html', 'tsx', 'jsx'],
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
+  transformIgnorePatterns: [
+    'node_modules/(?!((jest-)?react-native|@react-native(-community)?|@tamagui|tamagui)/)',
+  ],
   moduleNameMapper: {
     '\\.svg$': '@nx/react-native/plugins/jest/svg-mock',
+    '^tamagui$': require.resolve('tamagui'),
+    '^@tamagui/config/v5$': require.resolve('@tamagui/config/v5'),
+    '^@tamagui/themes/v5$': require.resolve('@tamagui/themes/v5'),
   },
   transform: {
     '^.+\\.(js|ts|tsx)$': [

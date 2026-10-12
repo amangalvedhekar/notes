@@ -1,3 +1,10 @@
+import type { ReactNode } from 'react';
+
+export type RegistrationProps = {
+  heading: string | ReactNode;
+  subheading: string | ReactNode;
+};
+
 export type FormValues = {
   email: string;
   password: string;

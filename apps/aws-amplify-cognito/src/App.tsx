@@ -40,7 +40,7 @@ export const App = () => {
       <ThemeProvider defaultTheme={scheme}>
         <StatusBar barStyle="dark-content" />
         <AuthProvider>
-          <Registration />
+          <Registration heading="Registration" subheading="Create an account"/>
         </AuthProvider>
       </ThemeProvider>
     </SafeAreaProvider>

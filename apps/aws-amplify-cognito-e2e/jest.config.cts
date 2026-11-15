@@ -24,6 +24,6 @@ module.exports = {
   verbose: true,
   setupFilesAfterEnv: ['<rootDir>/test-setup.ts'],
   transform: {
-    '^.+\\.(ts|js|html)$': ['@swc/jest', swcJestConfig],
+    '^.+\\.[cm]?[jt]sx?$': ['@swc/jest', swcJestConfig],
   },
 };

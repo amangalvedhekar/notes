@@ -4,11 +4,12 @@ import {
 } from '@amangalvedhekar/components';
 import { rootRoute } from './app';
 
+
 const HomePage = () => {
   return (
     <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
       <div style={{ width: '100%', maxWidth: 760 }}>
-        <Registration />
+        <Registration heading="Registration" subheading="Create an account"/>
       </div>
     </div>
   );

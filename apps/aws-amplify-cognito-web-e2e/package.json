@@ -1,0 +1,19 @@
+{
+  "name": "@notes/aws-amplify-cognito-web-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "typecheck": {
+        "executor": "nx:run-commands",
+        "options": {
+          "cwd": "apps/aws-amplify-cognito-web-e2e",
+          "command": "tsc --noEmit -p tsconfig.json"
+        }
+      }
+    },
+    "implicitDependencies": [
+      "@notes/aws-amplify-cognito-web"
+    ]
+  }
+}

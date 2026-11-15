@@ -12,6 +12,14 @@
       },
       "build-ios": {
         "executor": "@nx/detox:build",
+        "dependsOn": [
+          {
+            "projects": [
+              "@amangalvedhekar/components"
+            ],
+            "target": "build"
+          }
+        ],
         "options": {
           "detoxConfiguration": "ios.sim.debug"
         },
@@ -23,6 +31,14 @@
       },
       "test-ios": {
         "executor": "@nx/detox:test",
+        "dependsOn": [
+          {
+            "projects": [
+              "@amangalvedhekar/components"
+            ],
+            "target": "build"
+          }
+        ],
         "options": {
           "detoxConfiguration": "ios.sim.debug",
           "buildTarget": "@notes/aws-amplify-cognito-e2e:build-ios"
@@ -36,6 +52,14 @@
       },
       "build-android": {
         "executor": "@nx/detox:build",
+        "dependsOn": [
+          {
+            "projects": [
+              "@amangalvedhekar/components"
+            ],
+            "target": "build"
+          }
+        ],
         "options": {
           "detoxConfiguration": "android.emu.debug"
         },
@@ -47,6 +71,14 @@
       },
       "test-android": {
         "executor": "@nx/detox:test",
+        "dependsOn": [
+          {
+            "projects": [
+              "@amangalvedhekar/components"
+            ],
+            "target": "build"
+          }
+        ],
         "options": {
           "detoxConfiguration": "android.emu.debug",
           "buildTarget": "@notes/aws-amplify-cognito-e2e:build-android"

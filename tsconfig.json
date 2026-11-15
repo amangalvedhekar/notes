@@ -26,6 +26,9 @@
     },
     {
       "path": "./apps/aws-amplify-cognito-e2e"
+    },
+    {
+      "path": "./apps/aws-amplify-cognito-web-e2e"
     }
   ]
 }

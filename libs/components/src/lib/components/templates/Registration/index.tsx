@@ -6,7 +6,7 @@ import { Button, Checkbox, Paragraph } from '../../atoms';
 import { Hide, Lock, Profile, Show, Unlock } from '../../icons';
 import { InputWithLabel } from '../../molecules';
 import { LiveValidation } from '../LiveValidation';
-import type { FormTouched, FormUi, FormValues } from './types';
+import type { FormTouched, FormUi, FormValues, RegistrationProps } from './types';
 import { registrationIds } from '@amangalvedhekar/test-ids';
 import {
   getErrors,
@@ -20,7 +20,7 @@ import { useAuth } from '../../../hooks';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 //#endregion
 
-export const Registration = () => {
+export const Registration = ({ heading, subheading }: RegistrationProps) => {
   //#region State
   const [values, setValues] = useState<FormValues>(initialValues);
   const [touched, setTouched] = useState<FormTouched>(initialTouched);
@@ -99,8 +99,20 @@ export const Registration = () => {
     >
       <YStack flex={1} justifyContent="space-between">
         <YStack gap="$1">
-          <H1 testID={registrationIds.title} color="purple">Registration</H1>
-          <H2 testID={registrationIds.subtitle} fontWeight="bold">Create an account</H2>
+          {typeof heading === 'string' ? (
+            <H1 testID={registrationIds.title} color="purple">
+              {heading}
+            </H1>
+          ) : (
+            heading
+          )}
+          {typeof subheading === 'string' ? (
+            <H2 testID={registrationIds.subtitle} fontWeight="bold">
+              {subheading}
+            </H2>
+          ) : (
+            subheading
+          )}
           <InputWithLabel
             labelText="Email"
             size="$6"
@@ -186,8 +198,6 @@ export const Registration = () => {
           ) : null}
           <Button
             testID={registrationIds.submitButton}
-            themeInverse
-
             marginHorizontal="$2"
             borderRadius="$8"
             size="$6"

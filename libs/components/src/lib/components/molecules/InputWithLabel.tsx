@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
-import { Input, Label } from '../atoms';
-import { InputProps, YStack } from 'tamagui';
-import { Paragraph } from '../atoms/Paragraph';
+import { Input, Label, Paragraph, YStack, type InputProps } from '../atoms';
 import { Pressable } from 'react-native';
 
 export interface InputWithLabelProps extends InputProps {

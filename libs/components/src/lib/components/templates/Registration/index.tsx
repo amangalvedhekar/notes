@@ -96,6 +96,7 @@ export const Registration = ({ heading, subheading }: RegistrationProps) => {
       contentInsetAdjustmentBehavior="automatic"
       automaticallyAdjustKeyboardInsets
       contentContainerStyle={{ margin: 8, paddingBottom: 24, paddingTop: top }}
+      style={{ width: '100%' }}
     >
       <YStack flex={1} justifyContent="space-between">
         <YStack gap="$1">

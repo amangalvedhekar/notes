@@ -20,6 +20,7 @@ const customConfig = {
   resolver: {
     assetExts: assetExts.filter((ext) => ext !== 'svg'),
     sourceExts: [...sourceExts, 'cjs', 'mjs', 'svg'],
+    unstable_conditionNames: ['react-native', '@notes/source'],
     extraNodeModules: new Proxy(
       {},
       {

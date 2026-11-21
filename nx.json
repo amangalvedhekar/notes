@@ -121,6 +121,7 @@
   },
   "release": {
     "projects": [
+      "@amangalvedhekar/charts",
       "@amangalvedhekar/components",
       "@amangalvedhekar/test-ids"
     ],

@@ -15,10 +15,12 @@ const meta: Meta<typeof Registration> = {
       <AuthContext.Provider value={mockAuthContextValue}>
         <div
           style={{
-            margin: '0 auto',
-            maxWidth: 460,
-            minHeight: 760,
+            boxSizing: 'border-box',
+            display: 'flex',
+            flexDirection: 'column',
+            height: 760,
             padding: 24,
+            width: '100%',
           }}
         >
           <Story />

@@ -33,6 +33,7 @@ export default defineConfig(() => ({
     host: 'localhost',
   },
   resolve: {
+    conditions: ['@notes/source'],
     extensions,
     alias: {
       'react-native': 'react-native-web',

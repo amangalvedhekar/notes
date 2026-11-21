@@ -1,0 +1,49 @@
+{
+  "name": "@amangalvedhekar/charts",
+  "version": "0.0.1",
+  "description": "Shared React Native chart primitives used by BudgetBuddy applications.",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "prepack": "vite build && tsc --build tsconfig.lib.json --force"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amangalvedhekar/notes.git",
+    "directory": "libs/charts"
+  },
+  "dependencies": {
+    "react-native-gifted-charts": "1.4.81"
+  },
+  "peerDependencies": {
+    "expo-linear-gradient": "*",
+    "react": "19.2.0",
+    "react-native": "0.83.2",
+    "react-native-linear-gradient": "*",
+    "react-native-svg": "^15.15.1"
+  },
+  "peerDependenciesMeta": {
+    "expo-linear-gradient": {
+      "optional": true
+    },
+    "react-native-linear-gradient": {
+      "optional": true
+    }
+  }
+}

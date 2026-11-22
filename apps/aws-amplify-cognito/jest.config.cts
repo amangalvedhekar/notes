@@ -7,6 +7,9 @@ module.exports = {
   ...baseConfig,
   displayName: '@notes/aws-amplify-cognito',
   coverageDirectory: '../../coverage/apps/aws-amplify-cognito',
+  transformIgnorePatterns: [
+    'node_modules/(?!((jest-)?react-native|@react-native(-community)?|@react-navigation|@tamagui|escape-string-regexp|nanoid|tamagui)/)',
+  ],
   moduleNameMapper: {
     ...baseConfig.moduleNameMapper,
     '^@amangalvedhekar/components$':

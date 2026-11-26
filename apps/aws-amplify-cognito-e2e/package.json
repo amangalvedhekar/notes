@@ -4,14 +4,7 @@
   "private": true,
   "nx": {
     "targets": {
-      "build": {
-        "executor": "nx:noop"
-      },
-      "test": {
-        "executor": "nx:noop"
-      },
       "build-ios": {
-        "executor": "@nx/detox:build",
         "dependsOn": [
           {
             "projects": [
@@ -21,37 +14,44 @@
           }
         ],
         "options": {
-          "detoxConfiguration": "ios.sim.debug"
+          "args": [
+            "--args=\"-c ios.sim.debug\""
+          ]
         },
         "configurations": {
           "production": {
-            "detoxConfiguration": "ios.sim.release"
+            "args": [
+              "--args=\"-c ios.sim.release\""
+            ]
           }
-        }
+        },
+        "command": "nx run @notes/aws-amplify-cognito-e2e:detox-build"
       },
       "test-ios": {
-        "executor": "@nx/detox:test",
         "dependsOn": [
           {
             "projects": [
               "@amangalvedhekar/components"
             ],
             "target": "build"
-          }
+          },
+          "@notes/aws-amplify-cognito-e2e:build-ios"
         ],
         "options": {
-          "detoxConfiguration": "ios.sim.debug",
-          "buildTarget": "@notes/aws-amplify-cognito-e2e:build-ios"
+          "args": [
+            "--args=\"-c ios.sim.debug\""
+          ]
         },
         "configurations": {
           "production": {
-            "detoxConfiguration": "ios.sim.release",
-            "buildTarget": "@notes/aws-amplify-cognito-e2e:build-ios:production"
+            "args": [
+              "--args=\"-c ios.sim.release\""
+            ]
           }
-        }
+        },
+        "command": "nx run @notes/aws-amplify-cognito-e2e:detox-test"
       },
       "build-android": {
-        "executor": "@nx/detox:build",
         "dependsOn": [
           {
             "projects": [
@@ -61,39 +61,48 @@
           }
         ],
         "options": {
-          "detoxConfiguration": "android.emu.debug"
+          "args": [
+            "--args=\"-c android.emu.debug\""
+          ]
         },
         "configurations": {
           "production": {
-            "detoxConfiguration": "android.emu.release"
+            "args": [
+              "--args=\"-c android.emu.release\""
+            ]
           }
-        }
+        },
+        "command": "nx run @notes/aws-amplify-cognito-e2e:detox-build"
       },
       "test-android": {
-        "executor": "@nx/detox:test",
         "dependsOn": [
           {
             "projects": [
               "@amangalvedhekar/components"
             ],
             "target": "build"
-          }
+          },
+          "@notes/aws-amplify-cognito-e2e:build-android"
         ],
         "options": {
-          "detoxConfiguration": "android.emu.debug",
-          "buildTarget": "@notes/aws-amplify-cognito-e2e:build-android"
+          "args": [
+            "--args=\"-c android.emu.debug\""
+          ]
         },
         "configurations": {
           "production": {
-            "detoxConfiguration": "android.emu.release",
-            "buildTarget": "@notes/aws-amplify-cognito-e2e:build-android:production"
+            "args": [
+              "--args=\"-c android.emu.release\""
+            ]
           }
-        }
+        },
+        "command": "nx run @notes/aws-amplify-cognito-e2e:detox-test"
       }
     },
     "implicitDependencies": [
       "@notes/aws-amplify-cognito"
-    ]
+    ],
+    "// targets": "to see all targets run: nx show project @notes/aws-amplify-cognito-e2e --web"
   },
   "dependencies": {
     "@amangalvedhekar/test-ids": "0.0.1"

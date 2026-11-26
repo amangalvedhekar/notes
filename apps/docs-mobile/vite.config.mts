@@ -1,7 +1,8 @@
 import { defineConfig, transformWithEsbuild } from 'vite';
 import react from '@vitejs/plugin-react';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import viteTsconfigPaths from 'vite-tsconfig-paths';
 import { readFileSync } from 'fs';
+import { nxReadySignal } from '@nx/vite/plugins/nx-ready-signal.plugin';
 
 const extensions = [
   '.mjs',
@@ -72,9 +73,5 @@ export default defineConfig({
       loader: { '.js': 'jsx' },
     },
   },
-  plugins: [react(), nxViteTsPaths()],
-  // Uncomment this if you are using workers.
-  // worker: {
-  //   plugins: () => [ nxViteTsPaths() ],
-  // },
+  plugins: [react(), viteTsconfigPaths(), nxReadySignal()],
 });

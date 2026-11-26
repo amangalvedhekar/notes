@@ -6,7 +6,8 @@
     "types": ["node"],
     "rootDir": "src",
     "jsx": "react-jsx",
-    "tsBuildInfoFile": "out-tsc/tsconfig.lib.tsbuildinfo"
+    "tsBuildInfoFile": "out-tsc/tsconfig.lib.tsbuildinfo",
+    "ignoreDeprecations": "6.0"
   },
   "exclude": [
     "out-tsc",

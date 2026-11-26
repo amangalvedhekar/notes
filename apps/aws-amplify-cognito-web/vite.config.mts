@@ -1,8 +1,9 @@
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import viteTsconfigPaths from 'vite-tsconfig-paths';
 import { fileURLToPath } from 'node:url';
+import { nxReadySignal } from '@nx/vite/plugins/nx-ready-signal.plugin';
 
 export default defineConfig(() => ({
   root: import.meta.dirname,
@@ -38,7 +39,7 @@ export default defineConfig(() => ({
     port: 4200,
     host: 'localhost',
   },
-  plugins: [react(), nxViteTsPaths()],
+  plugins: [react(), viteTsconfigPaths(), nxReadySignal()],
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [],
@@ -61,12 +62,7 @@ export default defineConfig(() => ({
     reporters: ['default'],
     server: {
       deps: {
-        inline: [
-          /^react-native/,
-          /^@react-native/,
-          /^tamagui$/,
-          /^@tamagui/,
-        ],
+        inline: [/^react-native/, /^@react-native/, /^tamagui$/, /^@tamagui/],
       },
     },
     coverage: {

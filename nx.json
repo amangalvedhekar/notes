@@ -4,7 +4,6 @@
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
-      "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/eslint.config.mjs",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
@@ -94,9 +93,9 @@
     {
       "plugin": "@nx/detox/plugin",
       "options": {
-        "buildTargetName": "build",
-        "startTargetName": "start",
-        "testTargetName": "test",
+        "buildTargetName": "detox-build",
+        "startTargetName": "detox-start",
+        "testTargetName": "detox-test",
         "buildDepsTargetName": "build-deps",
         "watchDepsTargetName": "watch-deps"
       }
@@ -153,5 +152,8 @@
         "linter": "eslint"
       }
     }
+  },
+  "affected": {
+    "legacy": true
   }
 }

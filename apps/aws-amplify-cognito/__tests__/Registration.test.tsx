@@ -3,10 +3,10 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 import App from '../src/App';
 
 describe('Registration password validation', () => {
-  it('shows all password requirements including minimum length and digit', () => {
+  it('shows all password requirements including minimum length and digit', async () => {
     render(<App />);
 
-    fireEvent.changeText(screen.getByPlaceholderText('password'), 'Pass!');
+    fireEvent.changeText(await screen.findByPlaceholderText('password'), 'Pass!');
 
     expect(screen.getByTestId('password-min-length-msg')).toHaveTextContent(
       'Must be at least 8 characters long'
@@ -25,10 +25,10 @@ describe('Registration password validation', () => {
     );
   });
 
-  it('rejects a password that is missing a digit', () => {
+  it('rejects a password that is missing a digit', async () => {
     render(<App />);
 
-    const passwordInput = screen.getByPlaceholderText('password');
+    const passwordInput = await screen.findByPlaceholderText('password');
 
     fireEvent.changeText(passwordInput, 'Password!');
     fireEvent(passwordInput, 'blur');

@@ -34,7 +34,19 @@ jest.mock('@react-navigation/native-stack', () => ({
   createNativeStackNavigator: () => ({
     Navigator: ({ children }: { children: ReactNode }) => {
       const React = require('react');
-      const [initialScreen] = React.Children.toArray(children);
+      const findFirstScreen = (nodes: ReactNode): any => {
+        for (const node of React.Children.toArray(nodes)) {
+          if (node.props?.component) {
+            return node;
+          }
+
+          const nestedScreen = findFirstScreen(node.props?.children);
+          if (nestedScreen) {
+            return nestedScreen;
+          }
+        }
+      };
+      const initialScreen = findFirstScreen(children);
 
       return React.createElement(initialScreen.props.component);
     },

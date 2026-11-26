@@ -37,10 +37,10 @@
   "peerDependencies": {
     "@tamagui/config": "2.4.0",
     "aws-amplify": "^6.15.9",
-    "react": "19.2.0",
-    "react-native": "0.83.2",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
     "react-native-safe-area-context": "^5.7.0",
-    "react-native-svg": "^15.15.1",
+    "react-native-svg": "^15.16.1",
     "tamagui": "^2.4.0"
   }
 }

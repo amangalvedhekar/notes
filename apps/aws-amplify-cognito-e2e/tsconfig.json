@@ -6,7 +6,8 @@
     "allowJs": true,
     "types": ["node", "jest", "detox"],
     "rootDir": "src",
-    "tsBuildInfoFile": "out-tsc/detox/tsconfig.tsbuildinfo"
+    "tsBuildInfoFile": "out-tsc/detox/tsconfig.tsbuildinfo",
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src/**/*.ts", "src/**/*.js"],
   "exclude": [

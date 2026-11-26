@@ -21,7 +21,7 @@ export const RootNavigator = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         {isSignedIn ? (
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
         ) : (
@@ -33,7 +33,6 @@ export const RootNavigator = () => {
             <Stack.Screen
               name="OneTimePassword"
               component={OneTimePasswordScreen}
-              options={{ title: 'One-time password' }}
             />
           </>
         )}

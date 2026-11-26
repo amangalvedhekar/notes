@@ -4,6 +4,9 @@
   "private": true,
   "nx": {
     "targets": {
+      "test": {
+        "executor": "nx:noop"
+      },
       "build-ios": {
         "dependsOn": [
           {

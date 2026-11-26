@@ -2,8 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { AuthContext, Registration } from '@amangalvedhekar/components';
 
 const mockAuthContextValue = {
-  register: async () => undefined,
-  confirmUser: async () => undefined,
+  register: async () => undefined as never,
+  confirmUser: async () => undefined as never,
+  completeAutoSignIn: async () => undefined as never,
+  isAuthLoading: false,
+  isSignedIn: false,
+  username: null,
 };
 
 const meta: Meta<typeof Registration> = {

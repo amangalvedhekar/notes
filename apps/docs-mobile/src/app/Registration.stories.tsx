@@ -3,8 +3,12 @@ import { AuthContext, Registration } from '@amangalvedhekar/components';
 import { View } from 'react-native';
 
 const mockAuthContextValue = {
-  register: async () => undefined,
-  confirmUser: async () => undefined,
+  register: async () => undefined as never,
+  confirmUser: async () => undefined as never,
+  completeAutoSignIn: async () => undefined as never,
+  isAuthLoading: false,
+  isSignedIn: false,
+  username: null,
 };
 
 const meta: Meta<typeof Registration> = {

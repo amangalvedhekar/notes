@@ -88,7 +88,7 @@ jobs:
           profile: pixel_3a
           avd-name: detox_ci_api_34
           disable-animations: true
-          script: npx nx run @notes/aws-amplify-cognito-e2e:test-android:production --detoxConfiguration=android.emu.ci.release --artifactsLocation=artifacts --recordLogs=failing --takeScreenshots=failing
+          script: npx nx run @notes/aws-amplify-cognito-e2e:test-android:production --detoxConfiguration=android.emu.ci.release --artifacts-location=artifacts --record-logs=failing --take-screenshots=failing
 
       - name: Upload Detox artifacts
         if: failure()
@@ -171,9 +171,9 @@ jobs:
       - name: Run Detox tests
         run: |
           npx nx run @notes/aws-amplify-cognito-e2e:test-ios:production \
-            --artifactsLocation=artifacts \
-            --recordLogs=failing \
-            --takeScreenshots=failing
+            --artifacts-location=artifacts \
+            --record-logs=failing \
+            --take-screenshots=failing
 
       - name: Upload Detox artifacts
         if: failure()

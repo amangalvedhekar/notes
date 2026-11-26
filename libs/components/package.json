@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "description": "Cross-platform React and React Native components used by the notes applications.",
   "main": "./dist/index.cjs",
+  "react-native": "./src/index.ts",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "@notes/source": "./src/index.ts",
+      "react-native": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",

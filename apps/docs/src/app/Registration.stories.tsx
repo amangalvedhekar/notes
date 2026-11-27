@@ -2,8 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { AuthContext, Registration } from '@amangalvedhekar/components';
 
 const mockAuthContextValue = {
-  register: async () => undefined,
-  confirmUser: async () => undefined,
+  register: async () => undefined as never,
+  confirmUser: async () => undefined as never,
+  completeAutoSignIn: async () => undefined as never,
+  isAuthLoading: false,
+  isSignedIn: false,
+  username: null,
 };
 
 const meta: Meta<typeof Registration> = {
@@ -15,10 +19,12 @@ const meta: Meta<typeof Registration> = {
       <AuthContext.Provider value={mockAuthContextValue}>
         <div
           style={{
-            margin: '0 auto',
-            maxWidth: 460,
-            minHeight: 760,
+            boxSizing: 'border-box',
+            display: 'flex',
+            flexDirection: 'column',
+            height: 760,
             padding: 24,
+            width: '100%',
           }}
         >
           <Story />

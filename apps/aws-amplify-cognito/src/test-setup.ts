@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 // import '@testing-library/react-native/extend-expect';
 jest.useFakeTimers();
 jest.mock('@react-native-async-storage/async-storage', () =>
@@ -22,4 +24,32 @@ jest.mock('react-native-config', () => ({
     AWS_COGNITO_USER_POOL_ID: 'us-east-1_example',
     AWS_COGNITO_USER_POOL_CLIENT_ID: 'exampleclientid',
   },
+}));
+
+jest.mock('@react-navigation/native', () => ({
+  NavigationContainer: ({ children }: { children: ReactNode }) => children,
+}));
+
+jest.mock('@react-navigation/native-stack', () => ({
+  createNativeStackNavigator: () => ({
+    Navigator: ({ children }: { children: ReactNode }) => {
+      const React = require('react');
+      const findFirstScreen = (nodes: ReactNode): any => {
+        for (const node of React.Children.toArray(nodes)) {
+          if (node.props?.component) {
+            return node;
+          }
+
+          const nestedScreen = findFirstScreen(node.props?.children);
+          if (nestedScreen) {
+            return nestedScreen;
+          }
+        }
+      };
+      const initialScreen = findFirstScreen(children);
+
+      return React.createElement(initialScreen.props.component);
+    },
+    Screen: () => null,
+  }),
 }));

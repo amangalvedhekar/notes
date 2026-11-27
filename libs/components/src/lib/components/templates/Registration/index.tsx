@@ -20,7 +20,11 @@ import { useAuth } from '../../../hooks';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 //#endregion
 
-export const Registration = ({ heading, subheading }: RegistrationProps) => {
+export const Registration = ({
+  heading,
+  subheading,
+  onConfirmationRequired,
+}: RegistrationProps) => {
   //#region State
   const [values, setValues] = useState<FormValues>(initialValues);
   const [touched, setTouched] = useState<FormTouched>(initialTouched);
@@ -72,11 +76,14 @@ export const Registration = ({ heading, subheading }: RegistrationProps) => {
       }
 
       setUi((prev) => ({ ...prev, isSubmitting: true }));
-      await register({
+      const result = await register({
         username: values.email,
         password: values.password,
       });
 
+      if (result.nextStep.signUpStep === 'CONFIRM_SIGN_UP') {
+        onConfirmationRequired?.(values.email);
+      }
     } catch (error: unknown) {
       // ToDo: Danger file to detect console
       console.error(error);
@@ -96,6 +103,7 @@ export const Registration = ({ heading, subheading }: RegistrationProps) => {
       contentInsetAdjustmentBehavior="automatic"
       automaticallyAdjustKeyboardInsets
       contentContainerStyle={{ margin: 8, paddingBottom: 24, paddingTop: top }}
+      style={{ width: '100%' }}
     >
       <YStack flex={1} justifyContent="space-between">
         <YStack gap="$1">

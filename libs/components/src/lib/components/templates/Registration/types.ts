@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 export type RegistrationProps = {
   heading: string | ReactNode;
   subheading: string | ReactNode;
+  onConfirmationRequired?: (username: string) => void;
 };
 
 export type FormValues = {

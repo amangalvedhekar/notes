@@ -12,7 +12,8 @@
       "vite/client",
       "vitest/importMeta"
     ],
-    "rootDir": "src"
+    "rootDir": "src",
+    "ignoreDeprecations": "6.0"
   },
   "exclude": [
     "out-tsc",

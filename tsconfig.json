@@ -29,6 +29,12 @@
     },
     {
       "path": "./apps/aws-amplify-cognito-web-e2e"
+    },
+    {
+      "path": "./libs/charts"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0"
+  }
 }

@@ -1,7 +1,8 @@
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import viteTsconfigPaths from 'vite-tsconfig-paths';
+import { nxReadySignal } from '@nx/vite/plugins/nx-ready-signal.plugin';
 
 // React Native packages commonly ship platform-specific files next to their
 // native implementations. Prefer the web variants before Vite considers the
@@ -24,15 +25,16 @@ const extensions = [
 export default defineConfig(() => ({
   root: import.meta.dirname,
   cacheDir: '../../node_modules/.vite/apps/docs',
-  server:{
+  server: {
     port: 4200,
     host: 'localhost',
   },
-  preview:{
+  preview: {
     port: 4200,
     host: 'localhost',
   },
   resolve: {
+    conditions: ['@notes/source'],
     extensions,
     alias: {
       'react-native': 'react-native-web',
@@ -41,7 +43,7 @@ export default defineConfig(() => ({
         'react-native-web/dist/modules/AssetRegistry/index',
     },
   },
-  plugins: [react(), nxViteTsPaths()],
+  plugins: [react(), viteTsconfigPaths(), nxReadySignal()],
   optimizeDeps: {
     esbuildOptions: {
       resolveExtensions: extensions,
@@ -78,6 +80,6 @@ export default defineConfig(() => ({
     coverage: {
       reportsDirectory: './test-output/vitest/coverage',
       provider: 'v8' as const,
-    }
+    },
   },
 }));

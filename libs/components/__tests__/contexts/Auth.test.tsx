@@ -43,6 +43,12 @@ const ComponentUnderTest = ({ triggerType }: { triggerType?: TriggerType }) => {
   );
 };
 describe('Auth Context', () => {
+  beforeEach(() => {
+    (Auth as jest.Mocked<typeof Auth>).getCurrentUser = jest
+      .fn()
+      .mockResolvedValue({ userId: '', username: '' });
+  });
+
   it('renders without crashing', () => {
     render(<ComponentUnderTest />);
     expect(screen.getByText('Press Me')).toBeTruthy();
@@ -51,10 +57,23 @@ describe('Auth Context', () => {
   it(`calls signUp from amplify when register is called`, async () => {
     const user = userEvent.setup();
     const mockedSignUp = jest.fn();
-    const expectedParams = { password: '', username: '' };
+    const expectedParams = {
+      password: '',
+      username: '',
+      options: {
+        autoSignIn: { authFlowType: 'USER_PASSWORD_AUTH' },
+        userAttributes: { email: '' },
+      },
+    };
 
     (Auth as jest.Mocked<typeof Auth>).signUp = mockedSignUp.mockResolvedValue(
-      {}
+      {
+        isSignUpComplete: false,
+        nextStep: {
+          signUpStep: 'CONFIRM_SIGN_UP',
+          codeDeliveryDetails: {},
+        },
+      }
     );
     render(<ComponentUnderTest triggerType="register" />);
     const element = screen.getByTestId('test-button');
@@ -68,7 +87,10 @@ describe('Auth Context', () => {
     const mockedConfirmSignUp = jest.fn();
     const expectedParams = { confirmationCode: '', username: '' };
     (Auth as jest.Mocked<typeof Auth>).confirmSignUp =
-      mockedConfirmSignUp.mockResolvedValue({});
+      mockedConfirmSignUp.mockResolvedValue({
+        isSignUpComplete: true,
+        nextStep: { signUpStep: 'DONE' },
+      });
     render(<ComponentUnderTest triggerType="confirmUser" />);
     const element = screen.getByTestId('test-button');
     await user.press(element);

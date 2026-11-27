@@ -3,9 +3,12 @@
   "version": "0.0.1",
   "description": "Cross-platform React and React Native components used by the notes applications.",
   "main": "./dist/index.cjs",
+  "react-native": "./src/index.ts",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "@notes/source": "./src/index.ts",
+      "react-native": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
@@ -36,10 +39,10 @@
   "peerDependencies": {
     "@tamagui/config": "2.4.0",
     "aws-amplify": "^6.15.9",
-    "react": "19.2.0",
-    "react-native": "0.83.2",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
     "react-native-safe-area-context": "^5.7.0",
-    "react-native-svg": "^15.15.1",
+    "react-native-svg": "^15.16.1",
     "tamagui": "^2.4.0"
   }
 }

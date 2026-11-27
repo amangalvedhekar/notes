@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react-native';
 import type { ComponentType } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import type { SvgProps } from 'react-native-svg';
 
 type IconComponent = ComponentType<SvgProps>;
@@ -52,7 +52,7 @@ const getLabelColor = (theme: unknown) => (theme === 'dark' ? '#cbd5e1' : '#3741
 const getBorderColor = (theme: unknown) => (theme === 'dark' ? '#334155' : '#d1d5db');
 
 const IconsGallery = ({ theme }: { theme: unknown }) => (
-  <View style={styles.grid}>
+  <ScrollView contentContainerStyle={styles.grid} style={styles.gallery}>
     {icons.map(({ name, Component }) => (
       <View key={name} style={[styles.item, { borderColor: getBorderColor(theme) }]}>
         <Component
@@ -64,7 +64,7 @@ const IconsGallery = ({ theme }: { theme: unknown }) => (
         <Text style={[styles.label, { color: getLabelColor(theme) }]}>{name}</Text>
       </View>
     ))}
-  </View>
+  </ScrollView>
 );
 
 const SelectedIcon = ({ color, height, icon, theme, width }: IconStoryArgs & { theme: unknown }) => {
@@ -129,13 +129,16 @@ export const Selected: Story = {
 };
 
 const styles = StyleSheet.create({
+  gallery: {
+    flex: 1,
+  },
   grid: {
     alignContent: 'center',
+    flexGrow: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 16,
     justifyContent: 'center',
-    minHeight: '100%',
     padding: 16,
   },
   item: {

@@ -1,11 +1,16 @@
 import React from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
-import { AuthProvider, Registration, ThemeProvider, Amplify } from '@amangalvedhekar/components';
+import {
+  Amplify,
+  AuthProvider,
+  ThemeProvider,
+} from '@amangalvedhekar/components';
 import Config from 'react-native-config';
 import {
   initialWindowMetrics,
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
+import { RootNavigator } from './navigation/RootNavigator';
 
 const fallbackSafeAreaMetrics = {
   frame: { x: 0, y: 0, width: 0, height: 0 },
@@ -40,7 +45,7 @@ export const App = () => {
       <ThemeProvider defaultTheme={scheme}>
         <StatusBar barStyle="dark-content" />
         <AuthProvider>
-          <Registration heading="Registration" subheading="Create an account"/>
+          <RootNavigator />
         </AuthProvider>
       </ThemeProvider>
     </SafeAreaProvider>

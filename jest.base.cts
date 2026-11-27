@@ -3,7 +3,7 @@
 
 const createReactNativeJestConfig = (projectDir: string) => ({
   cacheDirectory: `${projectDir}/out-tsc/jest-cache`,
-  preset: 'react-native',
+  preset: '@react-native/jest-preset',
   resolver: '@nx/jest/plugins/resolver',
   moduleFileExtensions: ['ts', 'js', 'html', 'tsx', 'jsx'],
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
@@ -24,7 +24,7 @@ const createReactNativeJestConfig = (projectDir: string) => ({
       },
     ],
     '^.+\\.(bmp|gif|jpg|jpeg|mp4|png|psd|svg|webp)$': require.resolve(
-      'react-native/jest/assetFileTransformer.js'
+      '@react-native/jest-preset/jest/assetFileTransformer.js'
     ),
   },
 });

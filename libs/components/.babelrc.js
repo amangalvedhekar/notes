@@ -1,18 +1,10 @@
 module.exports = function (api) {
-  const isTest = api.env('test');
+  api.cache(true);
 
   return {
-    presets: isTest
-      ? [['module:@react-native/babel-preset', { useTransformReactJSX: true }]]
-      : [
-          [
-            '@nx/react/babel',
-            {
-              runtime: 'automatic',
-              useBuiltIns: 'usage',
-            },
-          ],
-        ],
+    presets: [
+      ['module:@react-native/babel-preset', { useTransformReactJSX: true }],
+    ],
     plugins: [],
   };
 };
